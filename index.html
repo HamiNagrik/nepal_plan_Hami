@@ -1,0 +1,469 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page-title">Hami-Nepali | Plan Nepal -Hamro Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="myplan.html" class="dropdown-item" data-i18n="mero-plan">
+                            <img src="images/Education2.jpg" alt="MyplanforNepal"><font color="white">🇳🇵🎯 मेरो योजना  🌸</font>
+                        </a> <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+                
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">"मेरो नेपाल - हिमालको माया, संस्कृतिको छाया।" 🌟</h1>
+            <h2 id="hero-title" data-i18n="hero-title">🇳🇵 नेपाल: हिमालको भूमि, शान्तिको धाम 🇳🇵</h2>
+            <p id="hero-subtitle" data-i18n="hero-subtitle">हिमालको गौरव, बुद्धको जन्मस्थान, र विविध संस्कृति र परम्पराको धनी नेपाल। यहाँको प्राकृतिक सौन्दर्य, सांस्कृतिक विरासत र आध्यात्मिक महत्त्व विश्वभरमा अद्वितीय छ।</p>
+        </div>
+    </section>
+
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title" data-i18n="nepal-title">🇳🇵 नेपाल: प्रकृतिको अमूल्य उपहार र मानवताको धरोहर 🇳🇵</h1>
+            <h2 class="nepal-subtitle" data-i18n="nepal-subtitle">हिमाल, नदी, जंगल र जैविक विविधताको धनी - नेपालको प्राकृतिक सम्पदा र सांस्कृतिक विरासतको संरक्षण हाम्रो साझा जिम्मेवारी</h2>
+        </div>
+    </div>
+
+    <div class="nepal-container">
+        <!-- प्राकृतिक सौन्दर्य क्षेत्र -->
+        <div class="nepal-sector" id="nepal-nature-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-nature-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-nature">१. हिमाल र प्राकृतिक सौन्दर्य</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-nature-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label" data-i18n="stat-peaks">हिमाली चुचुराहरू</div>
+                        <div class="nepal-stat-value">८</div>
+                        <div data-i18n="stat-peaks-desc">८,००० मिटर भन्दा माथि</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label" data-i18n="stat-parks">राष्ट्रिय निकुञ्ज</div>
+                        <div class="nepal-stat-value">१२</div>
+                        <div data-i18n="stat-parks-desc">संरक्षित क्षेत्र</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label" data-i18n="stat-biodiversity">जैविक विविधता</div>
+                        <div class="nepal-stat-value">१०,०००+</div>
+                        <div data-i18n="stat-biodiversity-desc">वनस्पति प्रजाति</div>
+                    </div>
+                </div>
+                
+                <p data-i18n="nature-description">नेपाल प्रकृतिको अमूल्य उपहार हो। यहाँको हिमाल, नदी, जंगल र जैविक विविधता विश्वभरमा अद्वितीय छ। सगरमाथा (एभरेस्ट) विश्वको सबैभन्दा अग्लो चुचुरो हो, जसले नेपालको गौरव बढाएको छ।</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-nature-progress" data-i18n="nature-progress">१००% प्राकृतिक सम्पदा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title" data-i18n="nature-features">प्राकृतिक विशेषताहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item" data-i18n="nature-feature-1">हिमाली पर्वत श्रृंखला: सगरमाथा, कञ्चनजङ्घा, धौलागिरी, अन्नपूर्णा</li>
+                        <li class="nepal-action-item" data-i18n="nature-feature-2">पवित्र तालहरू: तिलिचो, रारा, फेवा, बेगनास</li>
+                        <li class="nepal-action-item" data-i18n="nature-feature-3">विश्व सम्पदा स्थल: लुम्बिनी, चितवन राष्ट्रिय निकुञ्ज, काठमाडौं उपत्यका</li>
+                        <li class="nepal-action-item" data-i18n="nature-feature-4">विविध जलवायु: उष्ण प्रदेशदेखि हिमाली क्षेत्रसम्म</li>
+                        <li class="nepal-action-item" data-i18n="nature-feature-5">विश्व प्रसिद्ध ट्रेकिङ मार्गहरू</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4 data-i18n="nature-special">विशेष प्राकृतिक विशेषताहरू</h4>
+                    <ul>
+                        <li data-i18n="nature-special-1">कालीगण्डकी गोर्ज: विश्वको सबैभन्दा गहिरो गोर्ज</li>
+                        <li data-i18n="nature-special-2">रारा ताल: नेपालको सबैभन्दा ठुलो ताल</li>
+                        <li data-i18n="nature-special-3">मुस्ताङ: प्राचीन तिब्बती संस्कृतिको जीवन्त संग्रहालय</li>
+                        <li data-i18n="nature-special-4">अन्नपूर्णा संरक्षण क्षेत्र: विश्वको सबैभन्दा धेरै ट्रेकर आउने क्षेत्र</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- जैविक विविधता क्षेत्र -->
+        <div class="nepal-sector" id="nepal-biodiversity-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-biodiversity-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-biodiversity">२. जैविक विविधता र वन्यजन्तु</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-biodiversity-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वन्यजन्तु प्रजाति</div>
+                        <div class="nepal-stat-value">२०८</div>
+                        <div>संरक्षित प्रजाति</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पक्षी प्रजाति</div>
+                        <div class="nepal-stat-value">८७६</div>
+                        <div>विश्वभरमा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वन क्षेत्र</div>
+                        <div class="nepal-stat-value">४४.७%</div>
+                        <div>कुल क्षेत्रफल</div>
+                    </div>
+                </div>
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-energy-progress">२५% पूरा</div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">विशेष वन्यजन्तु र वनस्पति</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">एक सिंगे गैंडा: चितवन राष्ट्रिय निकुञ्जमा संरक्षित</li>
+                        <li class="nepal-action-item">बाघ: बर्दिया राष्ट्रिय निकुञ्जमा पाइने</li>
+                        <li class="nepal-action-item">लाल पान्डा: लङ्टाङ राष्ट्रिय निकुञ्जमा संरक्षित</li>
+                        <li class="nepal-action-item">स्पाइक्ड नार्सिसस: हिमाली क्षेत्रको दुर्लभ फूल</li>
+                        <li class="nepal-action-item">रोडोडेन्ड्रोन: नेपालको राष्ट्रिय फूल</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- आध्यात्मिक र धार्मिक महत्त्व -->
+        <div class="nepal-sector" id="nepal-spiritual-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-spiritual-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-spiritual">३. आध्यात्मिक र धार्मिक महत्त्व</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-spiritual-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पवित्र तीर्थस्थल</div>
+                        <div class="nepal-stat-value">१०००+</div>
+                        <div>मन्दिर र गुम्बा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">धार्मिक पर्व</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>वार्षिक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">योग केन्द्र</div>
+                        <div class="nepal-stat-value">२००+</div>
+                        <div>पोखरा र काठमाडौं</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख आध्यात्मिक स्थलहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">लुम्बिनी: बुद्धको जन्मस्थल</li>
+                        <li class="nepal-action-item">पशुपतिनाथ: विश्व प्रसिद्ध शिव मन्दिर</li>
+                        <li class="nepal-action-item">स्वयम्भूनाथ: प्राचीन बौद्ध स्तुप</li>
+                        <li class="nepal-action-item">मुक्तिनाथ: हिन्दू र बौद्ध धर्मको पवित्र स्थल</li>
+                        <li class="nepal-action-item">गोसाइकुण्ड: पवित्र ताल र तीर्थस्थल</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- सांस्कृतिक विरासत क्षेत्र -->
+        <div class="nepal-sector" id="nepal-cultural-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-cultural-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-cultural">४. सांस्कृतिक विरासत र परम्परा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-cultural-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जातीय समूह</div>
+                        <div class="nepal-stat-value">१२५+</div>
+                        <div>विविध जातीय समूह</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">भाषाहरू</div>
+                        <div class="nepal-stat-value">१२३</div>
+                        <div>बोलिने भाषा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">लोक कला</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>परम्परागत कला</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख सांस्कृतिक विशेषताहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">परम्परागत नृत्य: लाक्षे, मारुनी, धन नाच, नेवारी नृत्य</li>
+                        <li class="nepal-action-item">लोक संगीत: सारङ्गी, मादल, तुंगना, बाँसुरी</li>
+                        <li class="nepal-action-item">परम्परागत पोशाक: धोती, गुन्यु, पटुका, टोपी</li>
+                        <li class="nepal-action-item">लोक कला: थङ्का चित्रकला, पाउवा, मिट्टीको कला</li>
+                        <li class="nepal-action-item">परम्परागत भोजन: दाल भात, मोमो, सेल रोटी, योमारी</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>सांस्कृतिक महोत्सवहरू</h4>
+                    <ul>
+                        <li>दशैं: नेपालको सबैभन्दा ठुलो पर्व</li>
+                        <li>तिहार: दीपावलीको रूपमा मनाइने</li>
+                        <li>ल्होसार: तिब्बती नयाँ वर्ष</li>
+                        <li>इन्द्रजात्रा: काठमाडौं उपत्यकाको प्रमुख पर्व</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- आर्थिक क्षमता क्षेत्र -->
+        <div class="nepal-sector" id="nepal-economic-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-economic-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-economic">५. आर्थिक क्षमता र विकासको अवसर</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-economic-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जलविद्युत क्षमता</div>
+                        <div class="nepal-stat-value">८३,०००</div>
+                        <div>मेगावाट</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि क्षेत्र</div>
+                        <div class="nepal-stat-value">२८.८%</div>
+                        <div>जीडीपीमा योगदान</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पर्यटन</div>
+                        <div class="nepal-stat-value">७.९%</div>
+                        <div>जीडीपीमा योगदान</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">विकासको प्रमुख क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">जलविद्युत: नदी र हिमालबाट उत्पादन</li>
+                        <li class="nepal-action-item">कृषि: जैविक खेती र फलफूल उत्पादन</li>
+                        <li class="nepal-action-item">पर्यटन: एड्भेन्चर र सांस्कृतिक पर्यटन</li>
+                        <li class="nepal-action-item">सूचना प्रविधि: आउटसोर्सिङ र सफ्टवेयर विकास</li>
+                        <li class="nepal-action-item">हस्तकला: परम्परागत कला र शिल्प</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>आर्थिक विकासको चुनौतीहरू</h4>
+                    <ul>
+                        <li>राजनीतिक अस्थिरता</li>
+                        <li>पर्याप्त पूर्वाधारको अभाव</li>
+                        <li>विदेशी लगानीको कमी</li>
+                        <li>कुशल मानव श्रोतको बहिर्गमन</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- पर्यटन र एड्भेन्चर क्षेत्र -->
+        <div class="nepal-sector" id="nepal-tourism-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-tourism-content')">
+                <h2 class="nepal-sector-title" data-i18n="sector-tourism">६. पर्यटन र एड्भेन्चरको अवसर</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-tourism-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वार्षिक पर्यटक</div>
+                        <div class="nepal-stat-value">१० लाख+</div>
+                        <div>अन्तर्राष्ट्रिय पर्यटक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">ट्रेकिङ मार्ग</div>
+                        <div class="nepal-stat-value">१००+</div>
+                        <div>प्रमुख मार्गहरू</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विश्व सम्पदा</div>
+                        <div class="nepal-stat-value">४</div>
+                        <div>युनेस्को सूचीमा</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">पर्यटनको प्रमुख आकर्षणहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">एड्भेन्चर खेल: प्याराग्लाइडिङ, राफ्टिङ, बन्जी जम्पिङ</li>
+                        <li class="nepal-action-item">ट्रेकिङ: एभरेस्ट बेस क्याम्प, अन्नपूर्णा सर्किट</li>
+                        <li class="nepal-action-item">सांस्कृतिक पर्यटन: पाटन, भक्तपुर, ललितपुर</li>
+                        <li class="nepal-action-item">वन्यजन्तु पर्यटन: चितवन, बर्दिया राष्ट्रिय निकुञ्ज</li>
+                        <li class="nepal-action-item">आध्यात्मिक पर्यटन: लुम्बिनी, मुक्तिनाथ</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>पर्यटन विकासको अवसरहरू</h4>
+                    <ul>
+                        <li>स्वास्थ्य पर्यटन: आयुर्वेद र योग केन्द्रहरू</li>
+                        <li>ग्रामीण पर्यटन: होमस्टे र सांस्कृतिक अनुभव</li>
+                        <li>माउन्टेन फ्लाइट: हिमालको नजिकबाट हेर्ने</li>
+                        <li>फोटोग्राफी टुर: प्राकृतिक र सांस्कृतिक विषयवस्तु</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script>
+        // Update copyright year
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
+        });
+    </script>
+    <script src="tools/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+
+</body>
+</html>

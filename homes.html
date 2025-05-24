@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">🇳🇵 नेपालको आवास र शैक्षिक सुविधाहरू 🌟</h1>
+            <h2 class="hero-description">सस्तो, सुरक्षित र आधुनिक आवास र शैक्षिक सुविधाहरूको लागि योजना</h2>
+            <a href="#nepal-housing-sector" class="hero-button">थाहा पाउनुहोस्</a>
+        </div>
+    </section>
+
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">🇳🇵 नेपालको आवास र शैक्षिक सुविधाहरू 🌟</h1>
+            <h2 class="nepal-subtitle">सबै नेपालीहरूको लागि सस्तो, सुरक्षित र आधुनिक आवास र शैक्षिक सुविधाहरू। शहरी र ग्रामीण क्षेत्रमा समान विकास र अवसर।</h2>
+        </div>
+    </div>
+              
+    <div class="nepal-container">
+        <!-- आवास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-housing-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-housing-content')">
+                <h2 class="nepal-sector-title">१. आधुनिक आवास विकास</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-housing-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सस्तो आवास</div>
+                        <div class="nepal-stat-value">१०,०००+</div>
+                        <div>नयाँ आवास</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्मार्ट सहर</div>
+                        <div class="nepal-stat-value">५+</div>
+                        <div>विकासमा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सुविधा</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आधुनिक</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">आवास सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">२४/७ बिजुली र पानी आपूर्ति</li>
+                        <li class="nepal-action-item">स्वच्छता र स्वास्थ्य सुविधा</li>
+                        <li class="nepal-action-item">सुरक्षित र सुन्दर वातावरण</li>
+                        <li class="nepal-action-item">सामुदायिक केन्द्र र पार्क</li>
+                        <li class="nepal-action-item">स्मार्ट होम प्रविधि</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- शैक्षिक सुविधा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">२. आधुनिक शैक्षिक सुविधाहरू</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्कूलहरू</div>
+                        <div class="nepal-stat-value">१,०००+</div>
+                        <div>आधुनिक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कलेजहरू</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>विश्वस्तरीय</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विद्यार्थी</div>
+                        <div class="nepal-stat-value">१० लाख+</div>
+                        <div>लाभान्वित</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">शैक्षिक सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">डिजिटल कक्षा र प्रयोगशाला</li>
+                        <li class="nepal-action-item">खेलकुद र सांस्कृतिक कार्यक्रम</li>
+                        <li class="nepal-action-item">पुस्तकालय र अध्ययन केन्द्र</li>
+                        <li class="nepal-action-item">विशेष शिक्षा सुविधा</li>
+                        <li class="nepal-action-item">व्यावसायिक प्रशिक्षण केन्द्र</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- सामुदायिक विकास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-community-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-community-content')">
+                <h2 class="nepal-sector-title">३. सामुदायिक विकास र सुविधाहरू</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-community-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सामुदायिक केन्द्र</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>सक्रिय</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्वास्थ्य केन्द्र</div>
+                        <div class="nepal-stat-value">१,०००+</div>
+                        <div>सुविधा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पार्क र मनोरञ्जन</div>
+                        <div class="nepal-stat-value">२,०००+</div>
+                        <div>स्थलहरू</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">सामुदायिक सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">स्वास्थ्य सेवा केन्द्र</li>
+                        <li class="nepal-action-item">खेलकुद र मनोरञ्जन केन्द्र</li>
+                        <li class="nepal-action-item">सामुदायिक पुस्तकालय</li>
+                        <li class="nepal-action-item">स्वच्छता र स्वास्थ्य सुविधा</li>
+                        <li class="nepal-action-item">सामाजिक सुरक्षा कार्यक्रम</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्मार्ट आवास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-smart-housing-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-smart-housing-content')">
+                <h2 class="nepal-sector-title">४. स्मार्ट र टिकाऊ आवास प्रविधि</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-smart-housing-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सौर्य ऊर्जा</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>स्वच्छ ऊर्जा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पानी संरक्षण</div>
+                        <div class="nepal-stat-value">८०%</div>
+                        <div>कुशल प्रयोग</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्मार्ट प्रविधि</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आधुनिक</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">स्मार्ट आवास सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">सौर्य प्यानल र ब्याट्री प्रणाली</li>
+                        <li class="nepal-action-item">स्मार्ट पानी संरक्षण प्रणाली</li>
+                        <li class="nepal-action-item">स्मार्ट होम ऑटोमेशन</li>
+                        <li class="nepal-action-item">वायु गुणस्तर नियन्त्रण</li>
+                        <li class="nepal-action-item">स्मार्ट सुरक्षा प्रणाली</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- डिजिटल शिक्षा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-digital-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-digital-education-content')">
+                <h2 class="nepal-sector-title">५. डिजिटल र आधुनिक शिक्षा प्रणाली</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-digital-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल कक्षा</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>स्कूलहरूमा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अनलाइन शिक्षा</div>
+                        <div class="nepal-stat-value">२४/७</div>
+                        <div>सुविधा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">प्रविधि प्रशिक्षण</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>विद्यार्थीहरू</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">डिजिटल शिक्षा सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">हाइ-स्पिड इन्टरनेट कनेक्सन</li>
+                        <li class="nepal-action-item">डिजिटल पुस्तकालय र स्रोतहरू</li>
+                        <li class="nepal-action-item">भर्चुअल प्रयोगशाला</li>
+                        <li class="nepal-action-item">अनलाइन परीक्षा प्रणाली</li>
+                        <li class="nepal-action-item">डिजिटल सिकाइ प्लेटफर्म</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- प्राकृतिक स्रोत आधारित सुविधा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-natural-resources-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-natural-resources-content')">
+                <h2 class="nepal-sector-title">६. प्राकृतिक स्रोत आधारित सुविधाहरू</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-natural-resources-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जलविद्युत</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>स्वच्छ ऊर्जा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">प्राकृतिक स्रोत</div>
+                        <div class="nepal-stat-value">८०%</div>
+                        <div>कुशल प्रयोग</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पर्यावरण</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>संरक्षण</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्राकृतिक स्रोत सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">जलविद्युत आधारित बिजुली</li>
+                        <li class="nepal-action-item">प्राकृतिक पानी आपूर्ति प्रणाली</li>
+                        <li class="nepal-action-item">जैविक कृषि सुविधा</li>
+                        <li class="nepal-action-item">वन संरक्षण कार्यक्रम</li>
+                        <li class="nepal-action-item">पर्यावरण अनुकूल प्रविधि</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script src="tools/script.js"></script>
+</body>
+</html>

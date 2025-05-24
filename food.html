@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+    <link rel="stylesheet" href="tools/news.css">
+    <script src="tools/news.js" defer></script>
+      
+</head>
+<body>
+<div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">नेपालको खाद्य सुरक्षा र कृषि प्रणाली 🌟</h1>
+            <h2 id="hero-title">🇳🇵 नेपाल: हिमालको भूमि, शान्तिको धाम 🇳🇵</h2>
+            <div class="hero-stats">
+					<div class="stat-item">
+						<span class="stat-number">३० लाख+</span>
+						<span class="stat-label">कृषक परिवार</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">८५%</span>
+						<span class="stat-label">खाद्य उत्पादन</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">२१%</span>
+						<span class="stat-label">कृषि योग्य जमिन</span>
+					</div>
+			</div>
+        </div>
+    </section>
+
+	<div class="nepal-header">
+		<div class="nepal-container">
+			<div class="header-content">
+				<h1 class="nepal-title">नेपाल: खाद्य सुरक्षा र कृषि विकास</h1>
+				<h2 class="nepal-subtitle">आधुनिक कृषि प्रविधि, परम्परागत खेती र खाद्य वितरण प्रणालीको समन्वय</h2>
+			</div>
+		</div>
+	</div>
+              
+    <div class="nepal-container">
+        <!-- 1. कृषि उत्पादन र खाद्य सुरक्षा -->
+        <div class="nepal-sector" id="nepal-primary-agriculture-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-primary-agriculture-content')">
+                <h2 class="nepal-sector-title">१. कृषि उत्पादन र खाद्य सुरक्षा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-primary-agriculture-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि योग्य जमिन</div>
+                        <div class="nepal-stat-value">२१%</div>
+                        <div>कुल क्षेत्रफल</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषक परिवार</div>
+                        <div class="nepal-stat-value">३० लाख+</div>
+                        <div>कुल जनसंख्या</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य उत्पादन</div>
+                        <div class="nepal-stat-value">८५%</div>
+                        <div>आवश्यकता</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको कृषि क्षेत्रले देशको खाद्य सुरक्षा र आर्थिक विकासमा महत्वपूर्ण भूमिका खेल्छ। यसमा परम्परागत र आधुनिक कृषि पद्धतिहरूको समन्वय रहेको छ। तथापि, खाद्य सुरक्षा र कृषि विकासमा अझै चुनौतीहरू रहेका छन्।</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-food-progress">७०% खाद्य आत्मनिर्भरता</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख कृषि कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राष्ट्रिय खाद्य सुरक्षा कार्यक्रम</li>
+                        <li class="nepal-action-item">कृषि यान्त्रिकरण र आधुनिकीकरण</li>
+                        <li class="nepal-action-item">जैविक कृषि विकास</li>
+                        <li class="nepal-action-item">कृषि अनुसन्धान र प्रविधि हस्तान्तरण</li>
+                        <li class="nepal-action-item">कृषि सहकारी संस्था विकास</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>खाद्य सुरक्षाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>जलवायु परिवर्तनको प्रभाव</li>
+                        <li>कृषि योग्य जमिनको कमी</li>
+                        <li>कृषि प्रविधि र स्रोतको अभाव</li>
+                        <li>खाद्य वितरण प्रणालीको कमजोरी</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. कृषि शिक्षा र प्रशिक्षण -->
+        <div class="nepal-sector" id="nepal-agri-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-agri-education-content')">
+                <h2 class="nepal-sector-title">२. कृषि शिक्षा र प्रशिक्षण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-agri-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि महाविद्यालय</div>
+                        <div class="nepal-stat-value">१५+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि प्रशिक्षण केन्द्र</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>देशभर</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वार्षिक स्नातक</div>
+                        <div class="nepal-stat-value">१०००+</div>
+                        <div>कृषि विज्ञान</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">शैक्षिक कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">कृषि विज्ञान शिक्षा विस्तार</li>
+                        <li class="nepal-action-item">कृषि प्रविधि प्रशिक्षण</li>
+                        <li class="nepal-action-item">कृषि उद्यमिता विकास</li>
+                        <li class="nepal-action-item">कृषि विस्तार सेवा प्रशिक्षण</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>कृषि शिक्षाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>कृषि शिक्षाको लागि आधुनिक सुविधाहरूको अभाव</li>
+                        <li>कृषि शिक्षकहरूको कमी</li>
+                        <li>प्रायोगिक शिक्षाको सीमित अवसर</li>
+                        <li>कृषि शिक्षा र रोजगारीको बीच असमानता</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. कृषि अनुसन्धान र विकास -->
+        <div class="nepal-sector" id="nepal-agri-research-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-agri-research-content')">
+                <h2 class="nepal-sector-title">३. कृषि अनुसन्धान र विकास</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-agri-research-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि अनुसन्धान केन्द्र</div>
+                        <div class="nepal-stat-value">२०+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वार्षिक अनुसन्धान</div>
+                        <div class="nepal-stat-value">२००+</div>
+                        <div>प्रकाशित अध्ययन</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि विशेषज्ञ</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>सक्रिय अनुसन्धानकर्ता</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">अनुसन्धान क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">फसल प्रजनन र विकास</li>
+                        <li class="nepal-action-item">कृषि प्रविधि अनुसन्धान</li>
+                        <li class="nepal-action-item">जैविक कृषि अनुसन्धान</li>
+                        <li class="nepal-action-item">कृषि नीति अनुसन्धान</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>कृषि अनुसन्धानको चुनौतीहरू</h4>
+                    <ul>
+                        <li>अनुसन्धानको लागि वित्तीय स्रोतको सीमितता</li>
+                        <li>अनुसन्धान क्षमता र विशेषज्ञताको कमी</li>
+                        <li>अनुसन्धान नतिजाहरूको कार्यान्वयनको अभाव</li>
+                        <li>अन्तर्राष्ट्रिय सहकार्य र साझेदारीको सीमित अवसर</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. कृषि प्रविधि र यान्त्रिकरण -->
+        <div class="nepal-sector" id="nepal-agri-tech-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-agri-tech-content')">
+                <h2 class="nepal-sector-title">४. कृषि प्रविधि र यान्त्रिकरण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-agri-tech-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि यान्त्रिकरण केन्द्र</div>
+                        <div class="nepal-stat-value">३०+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्मार्ट कृषि प्रयोग</div>
+                        <div class="nepal-stat-value">१००+</div>
+                        <div>पायलट प्रोजेक्ट</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि प्रविधि हस्तान्तरण</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>प्रशिक्षण केन्द्र</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कृषि प्रविधि कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">स्मार्ट कृषि प्रविधि विस्तार</li>
+                        <li class="nepal-action-item">कृषि यान्त्रिकरण प्रशिक्षण</li>
+                        <li class="nepal-action-item">ड्रोन प्रविधि प्रयोग</li>
+                        <li class="nepal-action-item">सिंचाई प्रविधि आधुनिकीकरण</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>कृषि प्रविधिको चुनौतीहरू</h4>
+                    <ul>
+                        <li>कृषि यान्त्रिकरणको लागि वित्तीय स्रोतको अभाव</li>
+                        <li>प्रविधि प्रशिक्षण र क्षमता विकासको कमी</li>
+                        <li>स्मार्ट कृषि प्रविधिको लागि बुनियादी पूर्वाधारको अभाव</li>
+                        <li>कृषि प्रविधि अनुसन्धान र विकासको सीमितता</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. कृषि सहकारी र सामुदायिक कृषि -->
+        <div class="nepal-sector" id="nepal-cooperative-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-cooperative-content')">
+                <h2 class="nepal-sector-title">५. कृषि सहकारी र सामुदायिक कृषि</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-cooperative-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कृषि सहकारी</div>
+                        <div class="nepal-stat-value">५०००+</div>
+                        <div>सक्रिय सहकारी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सदस्य कृषक</div>
+                        <div class="nepal-stat-value">५ लाख+</div>
+                        <div>सहकारी सदस्य</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सामुदायिक कृषि</div>
+                        <div class="nepal-stat-value">१०००+</div>
+                        <div>सक्रिय समूह</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">सहकारी कृषि कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">कृषि सहकारी विकास कार्यक्रम</li>
+                        <li class="nepal-action-item">सामुदायिक कृषि प्रशिक्षण</li>
+                        <li class="nepal-action-item">सहकारी बजार विकास</li>
+                        <li class="nepal-action-item">सहकारी वित्तीय सेवा विस्तार</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>सहकारी कृषिको चुनौतीहरू</h4>
+                    <ul>
+                        <li>सहकारी संस्थाहरूको कमजोर प्रबन्धन</li>
+                        <li>सहकारी वित्तीय स्रोतको सीमितता</li>
+                        <li>सहकारी बजार पहुँचको अभाव</li>
+                        <li>सहकारी सदस्यहरूको क्षमता विकासको कमी</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. खाद्य वितरण र भण्डारण प्रणाली -->
+        <div class="nepal-sector" id="nepal-food-distribution-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-food-distribution-content')">
+                <h2 class="nepal-sector-title">६. खाद्य वितरण र भण्डारण प्रणाली</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-food-distribution-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य भण्डार</div>
+                        <div class="nepal-stat-value">१००+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य वितरण केन्द्र</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>देशभर</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य हानि</div>
+                        <div class="nepal-stat-value">३०%</div>
+                        <div>वार्षिक उत्पादन</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">खाद्य वितरण कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राष्ट्रिय खाद्य भण्डारण नीति</li>
+                        <li class="nepal-action-item">खाद्य वितरण नेटवर्क विस्तार</li>
+                        <li class="nepal-action-item">खाद्य हानि न्यूनीकरण कार्यक्रम</li>
+                        <li class="nepal-action-item">खाद्य वितरण डिजिटल प्रणाली</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>खाद्य वितरणको चुनौतीहरू</h4>
+                    <ul>
+                        <li>खाद्य भण्डारण सुविधाहरूको अभाव</li>
+                        <li>परिवहन र लजिस्टिक्सको कमजोरी</li>
+                        <li>खाद्य वितरण नेटवर्कको असमान वितरण</li>
+                        <li>खाद्य हानि र बर्बादीको उच्च दर</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. खाद्य सुरक्षा र गुणस्तर नियन्त्रण -->
+        <div class="nepal-sector" id="nepal-food-safety-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-food-safety-content')">
+                <h2 class="nepal-sector-title">७. खाद्य सुरक्षा र गुणस्तर नियन्त्रण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-food-safety-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य प्रयोगशाला</div>
+                        <div class="nepal-stat-value">१५+</div>
+                        <div>गुणस्तर नियन्त्रण</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">खाद्य निरीक्षक</div>
+                        <div class="nepal-stat-value">२००+</div>
+                        <div>सक्रिय निरीक्षक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">प्रमाणित उद्योग</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>खाद्य प्रशोधन</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">खाद्य सुरक्षा कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राष्ट्रिय खाद्य सुरक्षा नीति २०२३</li>
+                        <li class="nepal-action-item">खाद्य प्रशोधन उद्योगको लागि HACCP प्रमाणीकरण</li>
+                        <li class="nepal-action-item">खाद्य गुणस्तर नियन्त्रण प्रयोगशाला विस्तार</li>
+                        <li class="nepal-action-item">खाद्य सुरक्षा जागरूकता अभियान</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>खाद्य सुरक्षाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>खाद्य प्रशोधन उद्योगमा गुणस्तर नियन्त्रणको कमी</li>
+                        <li>खाद्य सुरक्षा नीति कार्यान्वयनको कमजोरी</li>
+                        <li>खाद्य प्रयोगशाला सुविधाहरूको अभाव</li>
+                        <li>खाद्य सुरक्षा जागरूकताको कमी</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script src="tools/script.js"></script>
+</body>
+</html>

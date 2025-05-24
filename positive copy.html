@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="Corruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="Corruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+        </div>
+    </section>
+
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title" data-i18n="nepal-title">🇳🇵 नेपालको सकारात्मकता 🌸</h1>
+            <h2 class="nepal-subtitle" data-i18n="nepal-subtitle">नेपाल एशियाको एक सुन्दर हिमाली राष्ट्र हो। विश्वको सर्वोच्च शिखर सगरमाथा (Mount Everest) यही देशमा अवस्थित छ। नेपाल विविध संस्कृति, जातजाति, भाषा र परम्पराले भरिएको देश</h2>
+        </div>
+    </div>
+              
+    <div class="nepal-container">
+        <!-- कृषि क्षेत्र -->
+        <div class="nepal-sector" id="nepal-agriculture-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-agriculture-content')">
+                <h2 class="nepal-sector-title">	नेपालको शिक्षा विकासका ३ मुख्य बुँदाहरू
+                </h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-agriculture-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">नेपालको साक्षरता दर</div>
+                        <div class="nepal-stat-value">६७.९%</div>
+                        <div>(पुरुष ७८.६%, महिला ५९.७%)</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्कूल पुग्न नसक्ने बालबालिका</div>
+                        <div class="nepal-stat-value">७.८%</div>
+                        <div>(५-१२ वर्ष उमेर समूह)</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">शिक्षक-विद्यार्थी अनुपात</div>
+                        <div class="nepal-stat-value">१:३४</div>
+                        <div>(राष्ट्रिय लक्ष्य १:३०)</div>
+                    </div>
+                </div>
+                
+                
+                <p>नेपालको आर्थिक विकासको मुख्य आधार कृषि क्षेत्र हो। यसको विकासका लागि:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-agriculture-progress">३५% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">जैविक खेतीलाई प्रोत्साहन (५०% सब्सिडी)</li>
+                        <li class="nepal-action-item">साना सिँचाइ परियोजना (सोलार पम्प, ड्रिप इरिगेशन)</li>
+                        <li class="nepal-action-item">कृषि प्रशोधन उद्योग स्थापना (फलफूल, दुध, अनाज)</li>
+                        <li class="nepal-action-item">किसान बजार डिजिटल प्लेटफर्म विकास</li>
+                        <li class="nepal-action-item">कृषि बिमा योजना विस्तार</li>
+                    </ul>
+                </div>
+                
+                <div class="nepal-sector-footer">
+                    <div>
+                        <strong>अनुमानित बजेट:</strong> ५ अर्ब रुपैयाँ | <strong>लक्ष्य:</strong> १० लाख किसान
+                    </div>
+                    <button class="nepal-btn nepal-btn-outline" onclick="showNepalDetails('nepal-agriculture-details')">थप विवरण</button>
+                </div>
+                
+                <div id="nepal-agriculture-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #DC143C;">
+                    <h4>गहन विश्लेषण</h4>
+                    <p>नेपालमा ६०% जनसंख्या कृषिमा निर्भर छ। तर उत्पादकत्व न्यून छ। समाधानका लागि:</p>
+                    <ul>
+                        <li>प्रति हेक्टर उत्पादन २ गुणा बढाउने</li>
+                        <li>किसान सहकारी संस्था सशक्तिकरण</li>
+                        <li>भारत र चीनलाई कृषि उत्पादन निर्यात</li>
+                    </ul>
+                    <button class="nepal-btn" onclick="hideNepalDetails('nepal-agriculture-details')">बन्द गर्नुहोस्</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ऊर्जा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-energy-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-energy-content')">
+                <h2 class="nepal-sector-title">२. ऊर्जा र आधारभूत संरचना</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-energy-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जलविद्युत् सम्भाव्यता</div>
+                        <div class="nepal-stat-value">५०,००० MW</div>
+                        <div>कुल क्षमता</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विद्युत् पहुँच</div>
+                        <div class="nepal-stat-value">९४%</div>
+                        <div>जनसंख्या</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">नवीकरणीय ऊर्जा</div>
+                        <div class="nepal-stat-value">५%</div>1
+                        <div>सौर्य/हावा</div>
+                    </div>
+                </div>
+                
+                <p>नेपालले आफ्नो जलविद्युत् सम्भाव्यताको मात्र ३% मात्र उपयोग गरेको छ। विकासका लागि:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-energy-progress">२५% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">१०,००० MW जलविद्युत् उत्पादन लक्ष्य (२०३० सम्म)</li>
+                        <li class="nepal-action-item">भारत र बंगलादेशलाई बिजुली निर्यात</li>
+                        <li class="nepal-action-item">ग्रामीण क्षेत्रमा सोलार उर्जा प्रयोग</li>
+                        <li class="nepal-action-item">साना जलविद्युत् आयोजना निर्माण</li>
+                        <li class="nepal-action-item">स्मार्ट ग्रिड प्रविधि स्थापना</li>
+                    </ul>
+                </div>
+                
+                <div class="nepal-sector-footer">
+                    <div>
+                        <strong>अनुमानित बजेट:</strong> १० अर्ब रुपैयाँ | <strong>लक्ष्य:</strong> १००% विद्युत् पहुँच
+                    </div>
+                    <button class="nepal-btn nepal-btn-outline" onclick="showNepalDetails('nepal-energy-details')">थप विवरण</button>
+                </div>
+                
+                <div id="nepal-energy-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #003893;">
+                    <h4>गहन विश्लेषण</h4>
+                    <p>नेपालले वार्षिक १,५०० MW बिजुली उत्पादन गर्छ, तर सम्भाव्यता ५०,००० MW छ। समाधान:</p>
+                    <ul>
+                        <li>निजी क्षेत्रलाई प्रोत्साहन (PPP मोडेल)</li>
+                        <li>भारतसंग दीर्घकालीन खरिद सम्झौता</li>
+                        <li>क्रस बोर्डर ट्रेडिङ्ग सुविधा</li>
+                    </ul>
+                    <button class="nepal-btn" onclick="hideNepalDetails('nepal-energy-details')">बन्द गर्नुहोस्</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- शिक्षा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">३. शिक्षा र मानव पूँजी विकास</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">साक्षरता दर</div>
+                        <div class="nepal-stat-value">६७.९%</div>
+                        <div>(पुरुष ७८.६%, महिला ५९.७%)</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्कूल नजाने</div>
+                        <div class="nepal-stat-value">७.८%</div>
+                        <div>बालबालिका</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">शिक्षक अनुपात</div>
+                        <div class="nepal-stat-value">१:३४</div>
+                        <div>विद्यार्थी प्रति</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको शिक्षा प्रणालीमा गुणस्तर र पहुँच दुबै चुनौती छन्। सुधारका लागि:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-education-progress">४०% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">शिक्षक प्रशिक्षण अनिवार्य गर्ने (प्रति २ वर्षमा)</li>
+                        <li class="nepal-action-item">STEM शिक्षा विस्तार (विज्ञान, प्रविधि, इन्जिनियरिङ, गणित)</li>
+                        <li class="nepal-action-item">ग्रामीण क्षेत्रमा डिजिटल शिक्षा सुविधा</li>
+                        <li class="nepal-action-item">व्यावसायिक शिक्षा केन्द्र विस्तार</li>
+                        <li class="nepal-action-item">महिला शिक्षा प्रोत्साहन (छात्रवृत्ति)</li>
+                    </ul>
+                </div>
+                
+                <div class="nepal-sector-footer">
+                    <div>
+                        <strong>अनुमानित बजेट:</strong> ४ अर्ब रुपैयाँ | <strong>लक्ष्य:</strong> ८५% साक्षरता
+                    </div>
+                    <button class="nepal-btn nepal-btn-outline" onclick="showNepalDetails('nepal-education-details')">थप विवरण</button>
+                </div>
+                
+                <div id="nepal-education-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #DC143C;">
+                    <h4>गहन विश्लेषण</h4>
+                    <p>नेपालको शिक्षा प्रणालीमा निम्न समस्याहरू छन्:</p>
+                    <ul>
+                        <li>गुणस्तरीय शिक्षक अभाव</li>
+                        <li>ग्रामीण-शहरी असमानता</li>
+                        <li>रोजगारीमूलक शिक्षा न्यून</li>
+                    </ul>
+                    <p>समाधान:</p>
+                    <ul>
+                        <li>शिक्षक सेवा आयोग सुधार</li>
+                        <li>स्थानीय भाषामा प्रारम्भिक शिक्षा</li>
+                        <li>उद्योग संग समन्वय गरी पाठ्यक्रम विकास</li>
+                    </ul>
+                    <button class="nepal-btn" onclick="hideNepalDetails('nepal-education-details')">बन्द गर्नुहोस्</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- पर्यटन क्षेत्र -->
+        <div class="nepal-sector" id="nepal-tourism-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-tourism-content')">
+                <h2 class="nepal-sector-title">४. पर्यटन र सांस्कृतिक विरासत</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-tourism-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वार्षिक पर्यटक</div>
+                        <div class="nepal-stat-value">१२ लाख+</div>
+                        <div>अन्तर्राष्ट्रिय</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">युनेस्को विश्व सम्पदा</div>
+                        <div class="nepal-stat-value">१०</div>
+                        <div>स्थलहरू</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">रोजगारी</div>
+                        <div class="nepal-stat-value">१० लाख+</div>
+                        <div>प्रत्यक्ष/अप्रत्यक्ष</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको पर्यटन क्षेत्रले राष्ट्रिय अर्थतन्त्रमा महत्वपूर्ण योगदान पुर्‍याउँछ। विकासका लागि:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-tourism-progress">४५% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">२० लाख पर्यटक लक्ष्य (२०३० सम्म)</li>
+                        <li class="nepal-action-item">सामुदायिक आधारित पर्यटन विकास</li>
+                        <li class="nepal-action-item">डिजिटल पर्यटन प्लेटफर्म स्थापना</li>
+                        <li class="nepal-action-item">सांस्कृतिक पर्यटन प्रवर्द्धन</li>
+                        <li class="nepal-action-item">पर्यटन क्षेत्रमा निजी लगानी प्रोत्साहन</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्वास्थ्य क्षेत्र -->
+        <div class="nepal-sector" id="nepal-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-health-content')">
+                <h2 class="nepal-sector-title">५. स्वास्थ्य सेवा र जनस्वास्थ्य</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जीवन प्रत्याशा</div>
+                        <div class="nepal-stat-value">७०.८ वर्ष</div>
+                        <div>बढ्दो प्रवृत्ति</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">शिशु मृत्यु दर</div>
+                        <div class="nepal-stat-value">२४ प्रति १०००</div>
+                        <div>घट्दो प्रवृत्ति</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्वास्थ्य केन्द्र</div>
+                        <div class="nepal-stat-value">५,०००+</div>
+                        <div>देशभर</div>
+                    </div>
+                </div>
+                
+                <p>नेपालले स्वास्थ्य क्षेत्रमा उल्लेखनीय प्रगति गरेको छ। अझै राम्रो गर्न:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-health-progress">५५% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">स्वास्थ्य बीमा विस्तार (सबै नागरिक)</li>
+                        <li class="nepal-action-item">ग्रामीण क्षेत्रमा आधुनिक स्वास्थ्य सेवा</li>
+                        <li class="nepal-action-item">डिजिटल स्वास्थ्य सेवा सुविधा</li>
+                        <li class="nepal-action-item">स्वास्थ्यकर्मी प्रशिक्षण र क्षमता विकास</li>
+                        <li class="nepal-action-item">स्वास्थ्य अनुसन्धान र विकास</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- प्रविधि क्षेत्र -->
+        <div class="nepal-sector" id="nepal-tech-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-tech-content')">
+                <h2 class="nepal-sector-title">६. प्रविधि र डिजिटल विकास</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-tech-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">इन्टरनेट प्रयोगकर्ता</div>
+                        <div class="nepal-stat-value">७०%</div>
+                        <div>जनसंख्या</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल भुक्तानी</div>
+                        <div class="nepal-stat-value">४०%</div>
+                        <div>बढ्दो प्रवृत्ति</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्टार्टअप</div>
+                        <div class="nepal-stat-value">१,०००+</div>
+                        <div>सक्रिय</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको प्रविधि क्षेत्र तीव्र विकासमा छ। अझै राम्रो गर्न:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-tech-progress">३०% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कार्ययोजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">डिजिटल नेपाल कार्यक्रम विस्तार</li>
+                        <li class="nepal-action-item">स्टार्टअप इकोसिस्टम विकास</li>
+                        <li class="nepal-action-item">साइबर सुरक्षा सुदृढीकरण</li>
+                        <li class="nepal-action-item">डिजिटल साक्षरता अभियान</li>
+                        <li class="nepal-action-item">स्मार्ट सहर विकास</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-date"></span> न्युज--युद्ध। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+    
+    <script src="tools/script.js"></script>
+</body>
+</html>

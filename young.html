@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+   
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता</h1>
+            <p class="hero-subtitle">नेपालको भविष्यको आधार</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="scrollToSection('nepal-youth-sector')">थप जान्नुहोस्</button>
+                <button class="hero-btn" onclick="scrollToSection('nepal-education-sector')">शिक्षा र सीप</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">👩‍🎓 नेपालको युवा शक्ति: देशको भविष्य 🌟</h1>
+            <h2 class="nepal-subtitle">नेपालको युवा पुस्ता देशको विकासको मुख्य आधार हो। युवाहरूको शिक्षा, सीप र नवीन विचारहरू नेपालको आर्थिक, सामाजिक र प्रविधि विकासको लागि महत्वपूर्ण छन्। युवाहरूको सशक्तिकरण र सहभागिता नै नेपालको समृद्ध भविष्यको गारन्टी हो।</h2>
+        </div>
+    </div>
+    
+    
+    <div class="nepal-container">
+        <!-- नेपालको युवा पुस्ता र विकासको अवसरहरू -->
+        <div class="nepal-sector" id="nepal-youth-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-youth-content')">
+                <h2 class="nepal-sector-title">१. नेपालको युवा पुस्ता: विकासको मुख्य शक्ति</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-youth-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">युवा जनसंख्या</div>
+                        <div class="nepal-stat-value">४०%</div>
+                        <div>१५-२९ वर्ष</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">साक्षरता दर</div>
+                        <div class="nepal-stat-value">७६%</div>
+                        <div>युवा साक्षरता</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल साक्षरता</div>
+                        <div class="nepal-stat-value">६५%</div>
+                        <div>युवा प्रयोगकर्ता</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको युवा पुस्ता देशको विकासको लागि महत्वपूर्ण शक्ति हो। युवाहरूको क्षमता र अवसरहरू:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-youth-progress">७५% क्षमता</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">युवाहरूको विकासका क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">शैक्षिक विकास: उच्च शिक्षा र व्यावसायिक प्रशिक्षणको विस्तार</li>
+                        <li class="nepal-action-item">रोजगारी अवसर: स्टार्टअप र उद्यमिता विकास</li>
+                        <li class="nepal-action-item">डिजिटल क्षमता: आईटी र प्रविधि क्षेत्रमा प्रशिक्षण</li>
+                        <li class="nepal-action-item">सामाजिक सशक्तिकरण: नेतृत्व र सामाजिक जिम्मेवारी</li>
+                        <li class="nepal-action-item">वैश्विक अवसर: विदेशी रोजगारी र अध्ययन</li>
+                    </ul>
+                </div>
+                
+                <div class="nepal-sector-footer">
+                    <div>
+                        <strong>लक्ष्य:</strong> २०३० सम्म युवा सशक्तिकरण | <strong>अवसर:</strong> असीमित
+                    </div>
+                    <button class="nepal-btn nepal-btn-outline" onclick="showNepalDetails('nepal-youth-details')">थप विवरण</button>
+                </div>
+                
+                <div id="nepal-youth-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #DC143C;">
+                    <h4>युवाहरूको विकासको विस्तृत योजना</h4>
+                    <p>१. शैक्षिक विकास:</p>
+                    <ul>
+                        <li>उच्च शिक्षा पहुँच बढाउन स्कोलरशिप कार्यक्रम</li>
+                        <li>व्यावसायिक प्रशिक्षण र प्राविधिक शिक्षा</li>
+                        <li>अनलाइन शिक्षा र डिजिटल साक्षरता</li>
+                        <li>वैज्ञानिक र प्राविधिक शिक्षा प्रोत्साहन</li>
+                    </ul>
+                    
+                    <p>२. रोजगारी र उद्यमिता:</p>
+                    <ul>
+                        <li>युवा स्टार्टअप लागि सहयोग कोष</li>
+                        <li>स्किल डेभलपमेन्ट प्रशिक्षण</li>
+                        <li>रोजगारी मेला र क्यारियर काउन्सेलिङ</li>
+                        <li>घरेलु र विदेशी रोजगारी अवसर</li>
+                    </ul>
+                    
+                    <p>३. सामाजिक सशक्तिकरण:</p>
+                    <ul>
+                        <li>युवा नेतृत्व विकास कार्यक्रम</li>
+                        <li>सामाजिक उद्यमिता प्रोत्साहन</li>
+                        <li>स्वयंसेवा र समुदाय विकास</li>
+                        <li>युवा संघ र संस्थाहरूको सहयोग</li>
+                    </ul>
+                    
+                    <p>४. डिजिटल विकास:</p>
+                    <ul>
+                        <li>आईटी र प्रविधि प्रशिक्षण</li>
+                        <li>डिजिटल स्टार्टअप विकास</li>
+                        <li>फ्रीलान्सिङ र रिमोट वर्क अवसर</li>
+                        <li>डिजिटल साक्षरता कार्यक्रम</li>
+                    </ul>
+                    
+                    <p>५. वैश्विक अवसर:</p>
+                    <ul>
+                        <li>विदेश अध्ययन छात्रवृत्ति</li>
+                        <li>अन्तर्राष्ट्रिय प्रशिक्षण कार्यक्रम</li>
+                        <li>वैश्विक रोजगारी अवसर</li>
+                        <li>अन्तर्राष्ट्रिय सहकार्य कार्यक्रम</li>
+                    </ul>
+                    
+                    <button class="nepal-btn" onclick="hideNepalDetails('nepal-youth-details')">बन्द गर्नुहोस्</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- युवाहरूको योगदान र भविष्य -->
+        <div class="nepal-sector" id="nepal-youth-contribution-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-youth-contribution-content')">
+                <h2 class="nepal-sector-title">२. युवाहरूको योगदान र भविष्यको दिशा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-youth-contribution-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्टार्टअप</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>युवा उद्यमी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">रोजगारी</div>
+                        <div class="nepal-stat-value">१० लाख+</div>
+                        <div>युवा रोजगारी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सामाजिक योगदान</div>
+                        <div class="nepal-stat-value">८०%</div>
+                        <div>स्वयंसेवी कार्य</div>
+                    </div>
+                </div>
+                
+                <p>युवाहरूको वर्तमान योगदान र भविष्यको सम्भावनाहरू:</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-youth-contribution-progress">६०% पूरा</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">युवाहरूको योगदानका क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">आर्थिक विकास: स्टार्टअप र उद्यमिता विकास</li>
+                        <li class="nepal-action-item">सामाजिक परिवर्तन: नवीन विचार र नेतृत्व</li>
+                        <li class="nepal-action-item">प्रविधि विकास: डिजिटल नवाचार र समाधान</li>
+                        <li class="nepal-action-item">सांस्कृतिक संरक्षण: परम्परा र आधुनिकताको समन्वय</li>
+                        <li class="nepal-action-item">राजनीतिक सहभागिता: युवा नेतृत्व र निर्णय प्रक्रिया</li>
+                    </ul>
+                </div>
+                
+                <div class="nepal-sector-footer">
+                    <div>
+                        <strong>लक्ष्य:</strong> २०३० सम्म युवा सशक्तिकरण | <strong>अवसर:</strong> असीमित
+                    </div>
+                    <button class="nepal-btn nepal-btn-outline" onclick="showNepalDetails('nepal-youth-contribution-details')">थप विवरण</button>
+                </div>
+                
+                <div id="nepal-youth-contribution-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #003893;">
+                    <h4>युवाहरूको योगदानको विस्तृत विश्लेषण</h4>
+                    <p>१. आर्थिक योगदान:</p>
+                    <ul>
+                        <li>स्टार्टअप र उद्यमिता विकास</li>
+                        <li>रोजगारी सिर्जना र आय वृद्धि</li>
+                        <li>नवीन व्यवसाय मोडेल विकास</li>
+                        <li>डिजिटल अर्थतन्त्रको विकास</li>
+                    </ul>
+                    
+                    <p>२. सामाजिक योगदान:</p>
+                    <ul>
+                        <li>सामाजिक उद्यमिता र नवाचार</li>
+                        <li>स्वयंसेवी कार्य र समुदाय विकास</li>
+                        <li>सामाजिक परिवर्तनको नेतृत्व</li>
+                        <li>युवा संघ र संस्थाहरूको सहभागिता</li>
+                    </ul>
+                    
+                    <p>३. प्रविधि योगदान:</p>
+                    <ul>
+                        <li>डिजिटल नवाचार र समाधान</li>
+                        <li>आईटी र प्रविधि विकास</li>
+                        <li>स्मार्ट सिटी र डिजिटल सेवा</li>
+                        <li>प्रविधि साक्षरता विकास</li>
+                    </ul>
+                    
+                    <p>४. सांस्कृतिक योगदान:</p>
+                    <ul>
+                        <li>परम्परागत संस्कृति संरक्षण</li>
+                        <li>आधुनिक सांस्कृतिक अभिव्यक्ति</li>
+                        <li>सांस्कृतिक पर्यटन विकास</li>
+                        <li>सांस्कृतिक आदानप्रदान</li>
+                    </ul>
+                    
+                    <p>५. राजनीतिक योगदान:</p>
+                    <ul>
+                        <li>युवा नेतृत्व विकास</li>
+                        <li>राजनीतिक सहभागिता बढाउने</li>
+                        <li>निर्णय प्रक्रियामा सहभागिता</li>
+                        <li>राजनीतिक जागरूकता विकास</li>
+                    </ul>
+                    
+                    <button class="nepal-btn" onclick="hideNepalDetails('nepal-youth-contribution-details')">बन्द गर्नुहोस्</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- युवाहरूको शैक्षिक अवसर र चुनौतीहरू -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">३. युवाहरूको शैक्षिक अवसर र चुनौतीहरू</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">उच्च शिक्षा</div>
+                        <div class="nepal-stat-value">२५%</div>
+                        <div>युवा पहुँच</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">व्यावसायिक प्रशिक्षण</div>
+                        <div class="nepal-stat-value">१५%</div>
+                        <div>युवा सहभागिता</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अनलाइन शिक्षा</div>
+                        <div class="nepal-stat-value">४०%</div>
+                        <div>डिजिटल पहुँच</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">शैक्षिक विकासका क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">उच्च शिक्षा पहुँच बढाउने कार्यक्रम</li>
+                        <li class="nepal-action-item">व्यावसायिक प्रशिक्षण र प्राविधिक शिक्षा</li>
+                        <li class="nepal-action-item">अनलाइन शिक्षा र डिजिटल साक्षरता</li>
+                        <li class="nepal-action-item">वैज्ञानिक र प्राविधिक शिक्षा प्रोत्साहन</li>
+                    </ul>
+                </div>
+                
+                <div id="nepal-education-details" style="display: none; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #4CAF50;">
+                    <h4>शैक्षिक विकासको विस्तृत योजना</h4>
+                    <p>१. उच्च शिक्षा विकास:</p>
+                    <ul>
+                        <li>स्कोलरशिप र शैक्षिक सहयोग कार्यक्रम</li>
+                        <li>अन्तर्राष्ट्रिय शैक्षिक सहकार्य</li>
+                        <li>शैक्षिक संस्थाहरूको गुणस्तर सुधार</li>
+                        <li>शोध र नवाचार प्रोत्साहन</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- युवाहरूको रोजगारी र उद्यमिता -->
+        <div class="nepal-sector" id="nepal-employment-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-employment-content')">
+                <h2 class="nepal-sector-title">४. युवाहरूको रोजगारी र उद्यमिता विकास</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-employment-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्टार्टअप</div>
+                        <div class="nepal-stat-value">१०००+</div>
+                        <div>नयाँ उद्यम</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">रोजगारी</div>
+                        <div class="nepal-stat-value">५ लाख+</div>
+                        <div>वार्षिक रोजगारी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">फ्रीलान्सिङ</div>
+                        <div class="nepal-stat-value">३०%</div>
+                        <div>युवा फ्रीलान्सर</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">रोजगारी विकासका क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">युवा स्टार्टअप लागि सहयोग कोष</li>
+                        <li class="nepal-action-item">स्किल डेभलपमेन्ट प्रशिक्षण</li>
+                        <li class="nepal-action-item">रोजगारी मेला र क्यारियर काउन्सेलिङ</li>
+                        <li class="nepal-action-item">घरेलु र विदेशी रोजगारी अवसर</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- युवाहरूको डिजिटल विकास -->
+        <div class="nepal-sector" id="nepal-digital-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-digital-content')">
+                <h2 class="nepal-sector-title">५. युवाहरूको डिजिटल विकास र नवाचार</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-digital-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल साक्षरता</div>
+                        <div class="nepal-stat-value">७०%</div>
+                        <div>युवा पहुँच</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">टेक स्टार्टअप</div>
+                        <div class="nepal-stat-value">३००+</div>
+                        <div>नयाँ कम्पनी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">फ्रीलान्सिङ</div>
+                        <div class="nepal-stat-value">४५%</div>
+                        <div>डिजिटल काम</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">डिजिटल विकासका क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">आईटी र प्रविधि प्रशिक्षण</li>
+                        <li class="nepal-action-item">डिजिटल स्टार्टअप विकास</li>
+                        <li class="nepal-action-item">फ्रीलान्सिङ र रिमोट वर्क अवसर</li>
+                        <li class="nepal-action-item">डिजिटल साक्षरता कार्यक्रम</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script src="tools/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2>Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2>Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google">Login with Google</a>
+            <a href="/auth/facebook" class="facebook">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()">≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                   
+                        <a href="positive.html" class="dropdown-item"><img src="images/education.jpeg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font></a>
+                        <a href="hope.html"  class="dropdown-item"><img src="images/jobss.png" alt="Hope">🕊️ तर आशा बाँकी छ </a>
+                        <a href="young.html" class="dropdown-item"><img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item"> <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना</a>
+                        <a href="jobs.html" class="dropdown-item"> <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध  </a>
+                        <a href="homes.html" class="dropdown-item"> <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा) </a>
+   
+                        <a href="#protection" class="dropdown-item">
+                            <img src="images/Child-protect1.jpg" alt="Protection">
+                            Child Protection
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                    <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown">
+                        <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                    </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item"> <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️</a>
+                        <a href="wealths.html" class="dropdown-item"> <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति </a>
+                        <a href="zerocorrupt.html" class="dropdown-item"> <img src="images/stopcorruption.jpg" alt="Corruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने </a>
+                    </div>
+                </div>
+            </div>    
+ 
+
+            <div class="nav-item">
+                <a href="health.html"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html"> आहार सुनिश्चित </a>						
+            </div>            
+            <div class="nav-item"> 
+                <a href="stopcorruption.html">🚫 भ्रष्टाचार नियन्त्रण</a>
+            </div>            
+            <div class="nav-item">
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 id="hero-title"></h2>
+            <h1 class="nepal-title">नेपाली राजनीतिक भ्रष्टाचार र नेताहरूको सम्पत्ति</h1>
+            <div class="nepal-challenges">
+              <h1 class="nepal-title">मुख्य भ्रष्टाचार तथ्यहरू:</h1>
+                  <p>💰 ९०% नेताहरूको सम्पत्ति अस्पष्ट स्रोतबाट</p>
+                  <p>🏢 ७५% नेताहरूको विदेशमा सम्पत्ति</p>
+                  <p>💵 ८५% सरकारी बजेट भ्रष्टाचारमा</p>
+                  <p>🏦 ६०% बैंक लोन नेताहरूलाई</p>
+            </div>
+        </div>
+    </section>
+
+     
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">नेपाली नेताहरूको भ्रष्टाचार र सम्पत्ति विवरण</h1>
+            <h2 class="nepal-subtitle">नेपालको राजनीतिक भ्रष्टाचारको विस्तृत विश्लेषण</h2>
+        </div>
+    </div>
+              
+    
+    <div class="nepal-container">
+        <!-- प्रमुख नेताहरूको भ्रष्टाचार क्षेत्र -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">१. प्रमुख नेताहरूको भ्रष्टाचार विवरण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सम्पत्ति वृद्धि</div>
+                        <div class="nepal-stat-value">१०००%+</div>
+                        <div>पदमा रहँदा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विदेशी सम्पत्ति</div>
+                        <div class="nepal-stat-value">८५%</div>
+                        <div>नेताहरूको</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अस्पष्ट आय</div>
+                        <div class="nepal-stat-value">९५%</div>
+                        <div>सम्पत्तिको स्रोत</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख भ्रष्टाचार केसहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">विदेशी मुद्रा कालोबजारी</li>
+                        <li class="nepal-action-item">सरकारी खरिदमा कमिसन</li>
+                        <li class="nepal-action-item">जग्गा माफिया</li>
+                        <li class="nepal-action-item">बैंक लोन दुरुपयोग</li>
+                        <li class="nepal-action-item">विदेशी निवेश दुरुपयोग</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>भ्रष्टाचारको मुख्य कारणहरू:</h4>
+                        <ul>
+                            <li>👥 कमजोर कानून व्यवस्था</li>
+                            <li>💰 राजनीतिक संरक्षण</li>
+                            <li>📝 अस्पष्ट सम्पत्ति कानून</li>
+                            <li>🔍 जाँच निकासीको अभाव</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- नेता १ को भ्रष्टाचार विवरण -->
+        <div class="nepal-sector" id="nepal-leader1-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader1-content')">
+                <h2 class="nepal-sector-title">२. पूर्व प्रधानमन्त्रीको सम्पत्ति विवरण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader1-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सम्पत्ति वृद्धि</div>
+                        <div class="nepal-stat-value">१५००%+</div>
+                        <div>पदमा रहँदा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विदेशी सम्पत्ति</div>
+                        <div class="nepal-stat-value">९०%</div>
+                        <div>नेताको</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अस्पष्ट आय</div>
+                        <div class="nepal-stat-value">९८%</div>
+                        <div>सम्पत्तिको स्रोत</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख भ्रष्टाचार केसहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">विदेशी मुद्रा कालोबजारी</li>
+                        <li class="nepal-action-item">सरकारी खरिदमा कमिसन</li>
+                        <li class="nepal-action-item">जग्गा माफिया</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- नेता २ को भ्रष्टाचार विवरण -->
+        <div class="nepal-sector" id="nepal-leader2-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader2-content')">
+                <h2 class="nepal-sector-title">३. वर्तमान नेताहरूको सम्पत्ति विवरण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader2-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सम्पत्ति वृद्धि</div>
+                        <div class="nepal-stat-value">२०००%+</div>
+                        <div>पदमा रहँदा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">विदेशी सम्पत्ति</div>
+                        <div class="nepal-stat-value">९५%</div>
+                        <div>नेताहरूको</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अस्पष्ट आय</div>
+                        <div class="nepal-stat-value">९९%</div>
+                        <div>सम्पत्तिको स्रोत</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख भ्रष्टाचार केसहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">विदेशी मुद्रा कालोबजारी</li>
+                        <li class="nepal-action-item">सरकारी खरिदमा कमिसन</li>
+                        <li class="nepal-action-item">जग्गा माफिया</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- नेता ३ को भ्रष्टाचार विवरण -->
+        <div class="nepal-sector" id="nepal-leader3-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader3-content')">
+                <h2 class="nepal-sector-title">४. नेपाली जनताको मौनता</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader3-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">भय</div>
+                        <div class="nepal-stat-value">८५%</div>
+                        <div>जनताको</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">असहायता</div>
+                        <div class="nepal-stat-value">७५%</div>
+                        <div>जनताको</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निराशा</div>
+                        <div class="nepal-stat-value">९०%</div>
+                        <div>जनताको</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">मौनताको कारणहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राजनीतिक दमन</li>
+                        <li class="nepal-action-item">कानूनी प्रक्रियाको कमजोरी</li>
+                        <li class="nepal-action-item">सामाजिक दबाब</li>
+                        <li class="nepal-action-item">आर्थिक असुरक्षा</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- नेता ४ को भ्रष्टाचार विवरण -->
+        <div class="nepal-sector" id="nepal-leader4-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader4-content')">
+                <h2 class="nepal-sector-title">५. भ्रष्टाचार नियन्त्रणको समाधान</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader4-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कानूनी सुधार</div>
+                        <div class="nepal-stat-value">आवश्यक</div>
+                        <div>तत्काल</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जनजागरण</div>
+                        <div class="nepal-stat-value">आवश्यक</div>
+                        <div>तत्काल</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पारदर्शिता</div>
+                        <div class="nepal-stat-value">आवश्यक</div>
+                        <div>तत्काल</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">समाधानका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">कडा कानून व्यवस्था</li>
+                        <li class="nepal-action-item">जनताको सहभागिता</li>
+                        <li class="nepal-action-item">मिडियाको स्वतन्त्रता</li>
+                        <li class="nepal-action-item">पारदर्शी प्रक्रिया</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="touch">
+            <h1>"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हुन् — संरक्षण र विवेकपूर्ण उपयोग नै समृद्धिको बाटो हो।" 🇳🇵</h1>
+            <h2>This is <strong>MERO NEPAL</strong>, Design By Subash
+                <a href="nepal.html">नेपाल</a> हिमाल <a href="index.html"></a>. 🌿 नेपालका प्राकृतिक स्रोतहरू (Natural Resources of Nepal)</h2>
+            <p>
+                नेपाल एक प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हुन्। यी स्रोतहरू नेपालको आर्थिक, सामाजिक र पर्यावरणीय विकासमा ठुलो योगदान पुर्‍याउँछन्।
+            </p>
+        </div>
+        <div class="social-icons">
+            <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                <i class="icon brands fa-github"></i>
+            </a>
+            <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="copyright">
+            <p>&copy;<script>document.write(new Date().getFullYear())</script> News--War. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="tools/script.js"></script>
+</body>
+</html>

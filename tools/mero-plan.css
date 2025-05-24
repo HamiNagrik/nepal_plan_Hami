@@ -1,0 +1,554 @@
+           :root {
+            --primary: #4CAF50;
+            --secondary: #2196F3;
+            --dark: #333;
+            --light: #f4f4f4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0efef;
+            transition: all 0.3s ease;
+        }
+   
+   
+        .nepal-container {
+            max-width: 1200px;
+            background: linear-gradient(95deg, #DC143C, #003893); /* Nepal flag colors */
+        }
+        #main-title {
+            color: #efeaeb;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .more-develop{
+            color: #efeaeb;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .more-develop a{
+            color: #29a262;
+            text-align: center;
+            font-size: 1em;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .content-section h2 {
+            color: #388660;
+            text-align: left;
+            text-decoration: underline;
+            font-size: 1.2em;
+            animation: fadeInDown 1s;
+            margin-bottom: 15px;
+        }
+        .content-section p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .content-section ul {
+            list-style-type: disc;
+            color: #2c2a2a;
+            font-weight: 400;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .content-section ul li {
+            margin-bottom: 10px;
+            color: #272525;
+            line-height: 1.6;
+        }
+
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s;
+        }
+        
+        h1 {
+            color:(#DC143C, #003893); /* Nepal flag colors */
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin: 10px 0 10px;
+            padding-bottom: 10px;
+        }
+        
+        .lang-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .lang-btn:not(.active) {
+            background-color: #ddd;
+            color: #555;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s;
+            transform: translateY(20px);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .content-section:nth-child(2) { animation-delay: 0.2s; }
+        .content-section:nth-child(3) { animation-delay: 0.4s; }
+        .content-section:nth-child(4) { animation-delay: 0.6s; }
+        .content-section:nth-child(5) { animation-delay: 0.8s; }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            animation: fadeIn 1s;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .rocket {
+            display: inline-block;
+            animation: fly 3s ease-in-out infinite;
+        }
+        
+        @keyframes fly {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+
+
+
+
+
+
+
+               .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .lang-switcher {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .lang-btn:not(.active):hover {
+            background: rgba(46, 125, 50, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #2E7D32, #4CAF50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGradient 8s infinite alternate;
+        }
+        
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Card Styles */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--accent);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardEntrance 0.8s forwards;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+        .card:nth-child(3) { animation-delay: 0.5s; }
+        .card:nth-child(4) { animation-delay: 0.7s; }
+        
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .potential-tag {
+            display: inline-block;
+            background: rgba(33, 150, 243, 0.1);
+            color: var(--secondary);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px dashed var(--secondary);
+        }
+        
+        .card ul {
+            list-style: none;
+        }
+        
+        .card li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .card li:hover {
+            transform: translateX(5px);
+        }
+        
+        .card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .impact-box {
+            background: rgba(46, 125, 50, 0.08);
+            padding: 1.2rem;
+            border-radius: 0.8rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--primary);
+            animation: pulseBg 4s infinite;
+        }
+        
+        @keyframes pulseBg {
+            0% { background-color: rgba(46, 125, 50, 0.08); }
+            50% { background-color: rgba(46, 125, 50, 0.15); }
+            100% { background-color: rgba(46, 125, 50, 0.08); }
+        }
+        
+        /* Challenges Table */
+        .challenges {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 1s 0.9s both;
+            overflow: hidden;
+        }
+        
+        .challenges h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            animation: fadeIn 1s 1s both;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+        
+        tr:hover {
+            background: rgba(33, 150, 243, 0.05);
+        }
+        
+        /* Conclusion Section */
+        .conclusion {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+            animation: fadeIn 1s 1.1s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .conclusion h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .conclusion p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .rocket {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+                
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 2rem 0 1rem;
+            }
+            
+            .lang-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation Classes */
+        .animate-text {
+            animation: textFadeIn 0.8s forwards;
+        }
+        
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }

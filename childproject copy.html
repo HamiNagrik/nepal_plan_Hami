@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2>Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2>Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google">Login with Google</a>
+            <a href="/auth/facebook" class="facebook">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()">≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                   
+                        <a href="positive.html" class="dropdown-item"><img src="images/education.jpeg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font></a>
+                        <a href="hope.html"  class="dropdown-item"><img src="images/jobss.png" alt="Hope">🕊️ तर आशा बाँकी छ </a>
+                        <a href="young.html" class="dropdown-item"><img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item"> <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना</a>
+                        <a href="jobs.html" class="dropdown-item"> <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध  </a>
+                        <a href="homes.html" class="dropdown-item"> <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा) </a>
+   
+                        <a href="#protection" class="dropdown-item">
+                            <img src="images/Child-protect1.jpg" alt="Protection">
+                            Child Protection
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                    <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown">
+                        <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                    </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item"> <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️</a>
+                        <a href="wealths.html" class="dropdown-item"> <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति </a>
+                        <a href="zerocorrupt.html" class="dropdown-item"> <img src="images/stopcorruption.jpg" alt="Corruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने </a>
+                    </div>
+                </div>
+            </div>    
+ 
+
+            <div class="nav-item">
+                <a href="health.html"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html"> आहार सुनिश्चित </a>						
+            </div>            
+            <div class="nav-item"> 
+                <a href="stopcorruption.html">🚫 भ्रष्टाचार नियन्त्रण</a>
+            </div>            
+            <div class="nav-item">
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 id="hero-title"></h2>
+            <h1 class="nepal-title">Welcome to Nepal - The Land of Himalayas</h1>
+            <div class="nepal-challenges">
+              <h1 class="nepal-title">मुख्य चुनौतीहरू:</h1>
+                  <p>🚨 ३६% बालबालिका कुपोषणको शिकार</p>
+                  <p>📚 २५% बालबालिका स्कूल छोड्न बाध्य</p>
+                  <p>💼 १२% बालबालिका श्रममा संलग्न</p>
+                  <p>🏥 ४०% स्वास्थ्य सेवा पहुँचबाट वञ्चित</p>
+            </div>
+        </div>
+    </section>
+
+     
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">बाल विकास र योजना प्रणाली</h1>
+            <h2 class="nepal-subtitle">नेपालका बालबालिकाको भविष्यको लागि समग्र विकास योजना</h2>
+        </div>
+    </div>
+              
+    
+    <div class="nepal-container">
+        <!-- शैक्षिक विकास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">१. शैक्षिक विकास र योजना</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्कूल उपस्थिति</div>
+                        <div class="nepal-stat-value">९७%</div>
+                        <div>प्राथमिक शिक्षा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">साक्षरता दर</div>
+                        <div class="nepal-stat-value">७१%</div>
+                        <div>१५+ उमेर समूह</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल शिक्षा</div>
+                        <div class="nepal-stat-value">४५%</div>
+                        <div>स्कूलहरूमा पहुँच</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">शैक्षिक विकास योजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">डिजिटल शिक्षा प्रणालीको विस्तार</li>
+                        <li class="nepal-action-item">व्यावसायिक शिक्षा र प्रशिक्षण</li>
+                        <li class="nepal-action-item">शिक्षक विकास कार्यक्रम</li>
+                        <li class="nepal-action-item">स्कूल पूर्व शिक्षा कार्यक्रम</li>
+                        <li class="nepal-action-item">विशेष शिक्षा सुविधा</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>शैक्षिक चुनौतीहरू:</h4>
+                        <ul>
+                            <li>📚 दूरस्थ क्षेत्रमा शैक्षिक सुविधा अभाव</li>
+                            <li>👨‍🏫 योग्य शिक्षकको कमी</li>
+                            <li>💻 डिजिटल सुविधा पहुँचको अभाव</li>
+                            <li>📖 शैक्षिक सामग्रीको अभाव</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्वास्थ्य र पोषण क्षेत्र -->
+        <div class="nepal-sector" id="nepal-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-health-content')">
+                <h2 class="nepal-sector-title">२. स्वास्थ्य र पोषण योजना</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">टीकाकरण दर</div>
+                        <div class="nepal-stat-value">८५%</div>
+                        <div>बालबालिका</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कुपोषण</div>
+                        <div class="nepal-stat-value">३६%</div>
+                        <div>बालबालिका</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्वास्थ्य केन्द्र</div>
+                        <div class="nepal-stat-value">४,०००+</div>
+                        <div>देशभर</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">स्वास्थ्य विकास योजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">बाल स्वास्थ्य कार्यक्रम</li>
+                        <li class="nepal-action-item">पोषण सहायता कार्यक्रम</li>
+                        <li class="nepal-action-item">मानसिक स्वास्थ्य सेवा</li>
+                        <li class="nepal-action-item">आपतकालीन स्वास्थ्य सेवा</li>
+                        <li class="nepal-action-item">स्वास्थ्य शिक्षा कार्यक्रम</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>स्वास्थ्य चुनौतीहरू:</h4>
+                        <ul>
+                            <li>🏥 दूरस्थ क्षेत्रमा स्वास्थ्य सेवा पहुँचको अभाव</li>
+                            <li>👨‍⚕️ योग्य स्वास्थ्यकर्मीको कमी</li>
+                            <li>💊 आवश्यक औषधिको अभाव</li>
+                            <li>🚑 आपतकालीन सेवाको अभाव</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- सामाजिक सुरक्षा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-protection-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-protection-content')">
+                <h2 class="nepal-sector-title">३. बाल सुरक्षा र सामाजिक सुरक्षा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-protection-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">बाल श्रम</div>
+                        <div class="nepal-stat-value">१२%</div>
+                        <div>५-१७ वर्ष</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">बाल विवाह</div>
+                        <div class="nepal-stat-value">३३%</div>
+                        <div>महिला</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सामाजिक सुरक्षा</div>
+                        <div class="nepal-stat-value">६०%</div>
+                        <div>कवरेज</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">सुरक्षा योजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">बाल श्रम नियन्त्रण कार्यक्रम</li>
+                        <li class="nepal-action-item">बाल विवाह रोकथाम</li>
+                        <li class="nepal-action-item">बाल सुरक्षा केन्द्रहरू</li>
+                        <li class="nepal-action-item">कानूनी सहायता सेवा</li>
+                        <li class="nepal-action-item">सामाजिक सुरक्षा कार्यक्रम</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>सुरक्षा चुनौतीहरू:</h4>
+                        <ul>
+                            <li>👥 बाल श्रम नियन्त्रणको कमजोर कार्यान्वयन</li>
+                            <li>👰 बाल विवाहको सामाजिक स्वीकृति</li>
+                            <li>🏛️ कानूनी प्रक्रियाको जटिलता</li>
+                            <li>🛡️ सुरक्षा नेटवर्कको अभाव</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- कौशल विकास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-skills-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-skills-content')">
+                <h2 class="nepal-sector-title">४. कौशल विकास र रोजगारी</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-skills-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">युवा बेरोजगारी</div>
+                        <div class="nepal-stat-value">१९%</div>
+                        <div>१५-२९ वर्ष</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">प्रशिक्षण केन्द्र</div>
+                        <div class="nepal-stat-value">५००+</div>
+                        <div>देशभर</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्टार्टअप</div>
+                        <div class="nepal-stat-value">१,०००+</div>
+                        <div>युवा उद्यमी</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कौशल विकास योजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">व्यावसायिक प्रशिक्षण कार्यक्रम</li>
+                        <li class="nepal-action-item">डिजिटल साक्षरता</li>
+                        <li class="nepal-action-item">उद्यमिता विकास</li>
+                        <li class="nepal-action-item">रोजगारी सहायता</li>
+                        <li class="nepal-action-item">स्टार्टअप सहायता</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>कौशल विकास चुनौतीहरू:</h4>
+                        <ul>
+                            <li>🎓 व्यावसायिक शिक्षाको अभाव</li>
+                            <li>💼 रोजगारीको अवसर सीमित</li>
+                            <li>💰 स्टार्टअप लागत उच्च</li>
+                            <li>🌐 बजार पहुँचको अभाव</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- डिजिटल विकास क्षेत्र -->
+        <div class="nepal-sector" id="nepal-digital-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-digital-content')">
+                <h2 class="nepal-sector-title">५. डिजिटल विकास र प्रविधि</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-digital-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">इन्टरनेट पहुँच</div>
+                        <div class="nepal-stat-value">६३%</div>
+                        <div>जनसंख्या</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्मार्टफोन</div>
+                        <div class="nepal-stat-value">७८%</div>
+                        <div>युवा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल साक्षरता</div>
+                        <div class="nepal-stat-value">४५%</div>
+                        <div>जनसंख्या</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">डिजिटल विकास योजना</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">डिजिटल शिक्षा प्लेटफर्म</li>
+                        <li class="nepal-action-item">साइबर सुरक्षा प्रशिक्षण</li>
+                        <li class="nepal-action-item">डिजिटल साक्षरता कार्यक्रम</li>
+                        <li class="nepal-action-item">टेक्नोलोजी स्टार्टअप</li>
+                        <li class="nepal-action-item">डिजिटल सुविधा विस्तार</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>डिजिटल विकास चुनौतीहरू:</h4>
+                        <ul>
+                            <li>📡 इन्टरनेट पहुँचको असमानता</li>
+                            <li>💻 डिजिटल साक्षरताको कमी</li>
+                            <li>🔒 साइबर सुरक्षाको जोखिम</li>
+                            <li>⚡ विद्युत आपूर्तिको अविश्वसनीयता</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="touch">
+            <h1>"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हुन् — संरक्षण र विवेकपूर्ण उपयोग नै समृद्धिको बाटो हो।" 🇳🇵</h1>
+            <h2>This is <strong>MERO NEPAL</strong>, Design By Subash
+                <a href="nepal.html">नेपाल</a> हिमाल <a href="index.html"></a>. 🌿 नेपालका प्राकृतिक स्रोतहरू (Natural Resources of Nepal)</h2>
+            <p>
+                नेपाल एक प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हुन्। यी स्रोतहरू नेपालको आर्थिक, सामाजिक र पर्यावरणीय विकासमा ठुलो योगदान पुर्‍याउँछन्।
+            </p>
+        </div>
+        <div class="social-icons">
+            <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                <i class="icon brands fa-github"></i>
+            </a>
+            <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="copyright">
+            <p>&copy;<script>document.write(new Date().getFullYear())</script> News--War. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="tools/script.js"></script>
+</body>
+</html>

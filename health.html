@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">नेपालको स्वास्थ्य प्रणाली - चुनौतीहरू र प्रगति | 🌟</h1>
+            <h2 class="hero-subtitle">आधुनिक चिकित्सा, परम्परागत उपचार र स्वास्थ्य सुविधाहरूको समन्वय</h2>
+                <ul>रोजगारी क्षेत्रहरू </ul>
+                <ul>डिजिटल अर्थतन्त्र र रोजगारी</ul>
+                <ul>आधुनिक प्रविधि र नवीनता</ul>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="scrollToSection('nepal-youth-sector')">थप जान्नुहोस्</button>
+            </div>
+        </div>
+    </section>
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">नेपाल: स्वास्थ्य सेवा र चुनौतीहरू</h1>
+            <h2 class="nepal-subtitle">आधुनिक चिकित्सा, परम्परागत उपचार र स्वास्थ्य सुविधाहरूको समन्वय</h2>
+        </div>
+    </div>
+              
+    <div class="nepal-container">
+        <!-- प्राथमिक स्वास्थ्य सेवा क्षेत्र -->
+        <div class="nepal-sector" id="nepal-primary-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-primary-health-content')">
+                <h2 class="nepal-sector-title">१. प्राथमिक स्वास्थ्य सेवा र सुविधाहरू</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-primary-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सरकारी अस्पताल</div>
+                        <div class="nepal-stat-value">१२५+</div>
+                        <div>जिल्ला र प्रदेश स्तर</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्वास्थ्य चौकी</div>
+                        <div class="nepal-stat-value">३,८००+</div>
+                        <div>ग्रामीण क्षेत्रहरूमा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निजी अस्पताल</div>
+                        <div class="nepal-stat-value">२००+</div>
+                        <div>मुख्य सहरहरूमा</div>
+                    </div>
+                </div>
+                
+                <p>नेपालको स्वास्थ्य सेवा प्रणालीमा प्राथमिक स्वास्थ्य सेवा महत्वपूर्ण भूमिका खेल्छ। यसमा सरकारी र निजी क्षेत्रको सहभागिता रहेको छ। तथापि, ग्रामीण क्षेत्रहरूमा स्वास्थ्य सेवा पुग्न अझै चुनौती रहेको छ।</p>
+                
+                <div class="nepal-progress-container">
+                    <div class="nepal-progress-bar" id="nepal-health-progress">७५% स्वास्थ्य सुविधा पहुँच</div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख स्वास्थ्य सुविधाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">त्रिवि शिक्षण अस्पताल: देशको सबैभन्दा ठुलो शिक्षण अस्पताल</li>
+                        <li class="nepal-action-item">बीर अस्पताल: हृदय रोग विशेषज्ञता</li>
+                        <li class="nepal-action-item">पाटन अस्पताल: आधुनिक चिकित्सा सुविधा</li>
+                        <li class="nepal-action-item">सुक्राराज ट्रपिकल र इन्फेक्सियस डिसिज अस्पताल</li>
+                        <li class="nepal-action-item">मानसिक स्वास्थ्य अस्पताल, लागनखेल</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>स्वास्थ्य सेवाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>ग्रामीण क्षेत्रमा स्वास्थ्य कर्मचारीको कमी</li>
+                        <li>आधुनिक चिकित्सा उपकरणको अभाव</li>
+                        <li>स्वास्थ्य बीमा कवरेज सीमित</li>
+                        <li>दूरस्थ क्षेत्रमा पहुँचको कठिनाई</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- आयुर्वेद र परम्परागत चिकित्सा -->
+        <div class="nepal-sector" id="nepal-traditional-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-traditional-health-content')">
+                <h2 class="nepal-sector-title">२. आयुर्वेद र परम्परागत चिकित्सा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-traditional-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">आयुर्वेद अस्पताल</div>
+                        <div class="nepal-stat-value">१५+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जडीबुटी केन्द्र</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>परम्परागत औषधि</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">योग केन्द्र</div>
+                        <div class="nepal-stat-value">२००+</div>
+                        <div>स्वास्थ्य र ध्यान</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">परम्परागत चिकित्सा विशेषताहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">आयुर्वेदिक उपचार: पञ्चकर्म, रसायन चिकित्सा</li>
+                        <li class="nepal-action-item">जडीबुटी चिकित्सा: हिमाली औषधीय पौधाहरू</li>
+                        <li class="nepal-action-item">योग र ध्यान: मानसिक स्वास्थ्यको लागि</li>
+                        <li class="nepal-action-item">एक्युपन्चर: चिनियाँ परम्परागत चिकित्सा</li>
+                        <li class="nepal-action-item">होमियोप्याथी: वैकल्पिक चिकित्सा पद्धति</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>परम्परागत चिकित्साको चुनौतीहरू</h4>
+                    <ul>
+                        <li>आधुनिक चिकित्सा र परम्परागत चिकित्साको समन्वयको अभाव</li>
+                        <li>जडीबुटीको वैज्ञानिक प्रमाणीकरणको कमी</li>
+                        <li>परम्परागत चिकित्सकहरूको प्रशिक्षण र प्रमाणीकरणको अभाव</li>
+                        <li>जडीबुटीको स्रोत र गुणस्तर नियन्त्रणको कमी</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्वास्थ्य शिक्षा र अनुसन्धान -->
+        <div class="nepal-sector" id="nepal-health-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-health-education-content')">
+                <h2 class="nepal-sector-title">३. स्वास्थ्य शिक्षा र अनुसन्धान</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-health-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">चिकित्सा महाविद्यालय</div>
+                        <div class="nepal-stat-value">२०+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">नर्सिङ कलेज</div>
+                        <div class="nepal-stat-value">५०+</div>
+                        <div>स्वास्थ्य शिक्षा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अनुसन्धान केन्द्र</div>
+                        <div class="nepal-stat-value">१०+</div>
+                        <div>स्वास्थ्य अनुसन्धान</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख शैक्षिक संस्थाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">त्रिभुवन विश्वविद्यालय: चिकित्सा शिक्षा</li>
+                        <li class="nepal-action-item">नेपाल स्वास्थ्य अनुसन्धान परिषद्</li>
+                        <li class="nepal-action-item">नेपाल मेडिकल कलेज</li>
+                        <li class="nepal-action-item">महेन्द्र रत्न एकेडेमी</li>
+                        <li class="nepal-action-item">नेपाल आयुर्वेद मेडिकल कलेज</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>स्वास्थ्य शिक्षाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>चिकित्सा शिक्षाको लागि आधुनिक सुविधाहरूको अभाव</li>
+                        <li>अनुसन्धानको लागि वित्तीय स्रोतको कमी</li>
+                        <li>अन्तर्राष्ट्रिय मानक अनुरुप प्रशिक्षणको अभाव</li>
+                        <li>शिक्षकहरूको कमी र प्रशिक्षणको अभाव</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्वास्थ्य बीमा र वित्तीय सुरक्षा -->
+        <div class="nepal-sector" id="nepal-health-insurance-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-health-insurance-content')">
+                <h2 class="nepal-sector-title">४. स्वास्थ्य बीमा र वित्तीय सुरक्षा</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-health-insurance-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">स्वास्थ्य बीमा कवरेज</div>
+                        <div class="nepal-stat-value">४५%</div>
+                        <div>जनसंख्या</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सरकारी बीमा योजना</div>
+                        <div class="nepal-stat-value">५+</div>
+                        <div>विभिन्न कार्यक्रमहरू</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निजी बीमा कम्पनी</div>
+                        <div class="nepal-stat-value">१५+</div>
+                        <div>स्वास्थ्य बीमा प्रदायक</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">भविष्यको योजनाहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">सार्वभौमिक स्वास्थ्य कवरेजको लागि विस्तार</li>
+                        <li class="nepal-action-item">डिजिटल स्वास्थ्य बीमा प्रणालीको विकास</li>
+                        <li class="nepal-action-item">गरिब परिवारहरूको लागि विशेष बीमा योजना</li>
+                        <li class="nepal-action-item">स्वास्थ्य बचत खाता प्रणालीको शुरुवात</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>स्वास्थ्य बीमाको चुनौतीहरू</h4>
+                    <ul>
+                        <li>सीमित बीमा कवरेज र उच्च प्रीमियम</li>
+                        <li>बीमा प्रक्रियामा जटिलता र पारदर्शिताको कमी</li>
+                        <li>गरिब र वंचित समुदायहरूलाई बीमा पहुँचको अभाव</li>
+                        <li>बीमा दावी प्रक्रियामा विलम्ब र जटिलता</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- डिजिटल स्वास्थ्य र टेलिमेडिसिन -->
+        <div class="nepal-sector" id="nepal-digital-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-digital-health-content')">
+                <h2 class="nepal-sector-title">५. डिजिटल स्वास्थ्य र टेलिमेडिसिन</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-digital-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">टेलिमेडिसिन केन्द्र</div>
+                        <div class="nepal-stat-value">३०+</div>
+                        <div>दूरस्थ क्षेत्रहरूमा</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">डिजिटल स्वास्थ्य ऐप</div>
+                        <div class="nepal-stat-value">२०+</div>
+                        <div>स्वास्थ्य सेवा प्रदायक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">इ-स्वास्थ्य रेकर्ड</div>
+                        <div class="nepal-stat-value">५०%</div>
+                        <div>अस्पतालहरूमा</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">डिजिटल स्वास्थ्य पहलहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राष्ट्रिय डिजिटल स्वास्थ्य रणनीति २०२५</li>
+                        <li class="nepal-action-item">मोबाइल स्वास्थ्य सेवा विस्तार</li>
+                        <li class="nepal-action-item">आर्टिफिसियल इन्टेलिजेन्स आधारित निदान</li>
+                        <li class="nepal-action-item">स्वास्थ्य डाटा सुरक्षा नीति</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>डिजिटल स्वास्थ्यको चुनौतीहरू</h4>
+                    <ul>
+                        <li>इन्टरनेट पहुँच र डिजिटल साक्षरताको कमी</li>
+                        <li>डिजिटल स्वास्थ्य प्रणालीको लागि वित्तीय स्रोतको अभाव</li>
+                        <li>साइबर सुरक्षा र डाटा गोपनीयताको चुनौती</li>
+                        <li>डिजिटल स्वास्थ्य सेवाको लागि कानुनी ढाँचाको अभाव</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- मानसिक स्वास्थ्य र कल्याण -->
+        <div class="nepal-sector" id="nepal-mental-health-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-mental-health-content')">
+                <h2 class="nepal-sector-title">६. मानसिक स्वास्थ्य र कल्याण</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-mental-health-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">मानसिक स्वास्थ्य केन्द्र</div>
+                        <div class="nepal-stat-value">२५+</div>
+                        <div>सरकारी र निजी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">मनोचिकित्सक</div>
+                        <div class="nepal-stat-value">१५०+</div>
+                        <div>सक्रिय चिकित्सक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">काउन्सेलिङ सेवा</div>
+                        <div class="nepal-stat-value">१००+</div>
+                        <div>स्वास्थ्य संस्थाहरूमा</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">मानसिक स्वास्थ्य कार्यक्रमहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">राष्ट्रिय मानसिक स्वास्थ्य नीति २०२३</li>
+                        <li class="nepal-action-item">युवा मानसिक स्वास्थ्य कार्यक्रम</li>
+                        <li class="nepal-action-item">आपतकालीन मनोवैज्ञानिक सेवा</li>
+                        <li class="nepal-action-item">मानसिक स्वास्थ्य जागरूकता अभियान</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>मानसिक स्वास्थ्यको चुनौतीहरू</h4>
+                    <ul>
+                        <li>मानसिक स्वास्थ्यको प्रति सामाजिक कलंक र भेदभाव</li>
+                        <li>मानसिक स्वास्थ्य सेवाको लागि विशेषज्ञको कमी</li>
+                        <li>मानसिक स्वास्थ्य नीति र कार्यक्रमको कमजोर कार्यान्वयन</li>
+                        <li>मानसिक स्वास्थ्य सेवाको लागि वित्तीय स्रोतको अभाव</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- स्वास्थ्य अनुसन्धान र नवीनता -->
+        <div class="nepal-sector" id="nepal-health-research-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-health-research-content')">
+                <h2 class="nepal-sector-title">७. स्वास्थ्य अनुसन्धान र नवीनता</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-health-research-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अनुसन्धान केन्द्र</div>
+                        <div class="nepal-stat-value">२०+</div>
+                        <div>स्वास्थ्य अनुसन्धान</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">वार्षिक अनुसन्धान</div>
+                        <div class="nepal-stat-value">१००+</div>
+                        <div>प्रकाशित अध्ययन</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">अन्तर्राष्ट्रिय सहकार्य</div>
+                        <div class="nepal-stat-value">३०+</div>
+                        <div>संस्थाहरू</div>
+                    </div>
+                </div>
+
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">अनुसन्धान क्षेत्रहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">हिमाली औषधीय पौधाहरूको अनुसन्धान</li>
+                        <li class="nepal-action-item">जनस्वास्थ्य नीति अनुसन्धान</li>
+                        <li class="nepal-action-item">स्वास्थ्य प्रविधि नवीनता</li>
+                        <li class="nepal-action-item">जैव प्रविधि अनुसन्धान</li>
+                    </ul>
+                </div>
+
+                <div class="nepal-details">
+                    <h4>स्वास्थ्य अनुसन्धानको चुनौतीहरू</h4>
+                    <ul>
+                        <li>अनुसन्धानको लागि वित्तीय स्रोतको सीमितता</li>
+                        <li>अनुसन्धान क्षमता र विशेषज्ञताको कमी</li>
+                        <li>अनुसन्धान नतिजाहरूको कार्यान्वयनको अभाव</li>
+                        <li>अन्तर्राष्ट्रिय सहकार्य र साझेदारीको सीमित अवसर</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script src="tools/script.js"></script>
+</body>
+</html>

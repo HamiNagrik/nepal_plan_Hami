@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hami-Nepali | Plan Nepal - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+     <section class="myhero" id="home">
+        <div class="myhero-content">
+            <h1 data-i18n="myhero-title">सम्पर्क गर्नुहोस्</h1>
+            <p data-i18n="myhero-description">हामीलाई सम्पर्क गर्नको लागि तलको फारम भर्नुहोस्।</p>
+        </div>
+    </section>
+
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 data-i18n="hero-title">सम्पर्क गर्नुहोस्</h1>
+            <h2 class="nepal-subtitle" data-i18n="nepal-subtitle">हामीलाई सम्पर्क गर्नको लागि तलको फारम भर्नुहोस्।</h2>
+        </div>
+    </div>
+
+          <!-- Video Area क्षेत्र -->
+    <div class="mero-nepal-container">
+        <div class="mero-nepal-sector" id="mero-nepal-nature-sector">
+            <div class="mero-nepal-sector-header">
+                <h2 class="mero-nepal-sector-title">🇳🇵 Watch some real facts Clips !!! </h2>
+                <span class="mero-nepal-toggle-icon">+</span>
+            </div>
+            <div class="mero-nepal-sector-content">
+                <!-- 4-Column Video Grid -->
+                <div class="mero-nepal-video-grid">
+                    <!-- Video 1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/Economic-growth-fuelling-climate-change-Crunched.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/GDPvsClimate.jpeg" alt="Political">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">GDP VS Climate Change</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/debt Real Economy vs. Financial Economy.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/Dept&Economy.webp" alt="Rejesh Sir">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">DebtVsEconomy</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/Afaganistan-America-Terorist.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/terrorist.jpg" alt="Corruption">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Why Afaganistan-America-Terorist</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/Kingkilledwhy.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/royalnepalmassacre.jpg" alt="Nato">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">royalnepalmassacre</h3>
+                        </div>
+                    </div>
+                    <!-- Video 1.1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/Drug-Industries.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/Drug -mafia.jpg" alt="Why Rich & Poor">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Drug-Industries</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/USAIDWuhan-China-Virus.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/Wuhan-China-Virus.jpg" alt="Rule of Nature">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">USAIDWuhan-China-Virus</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/War-is-Madness.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/War-is-Madness.jpg" alt="Money and Value">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">War-is-Madness</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/USARealFact.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/global-economic-growth.jpg" alt="Rethinking Capitalism">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Is This time to Rethinking Capitalism</h3>
+                        </div>
+                    </div>
+
+                        <!-- Video 1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/yourIphone+Car.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/fact-behind-phone.jpg" alt="Political">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Law and Justic</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/Rajesh.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/stopcorruption.jpg" alt="Rejesh Sir">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Point of View</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/Vaccinenot for Human.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/Vaccine.png" alt="Corruption">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Corrupt-स्वर्गीय सौन्दर्य</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/Nano.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/city.jpeg" alt="Nato">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">What we want</h3>
+                        </div>
+                    </div>
+                         <!-- Video 1.1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/Why Some Countries Are Poor and Others Rich [720p].mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/cultureNepal.jpg" alt="Why Rich & Poor">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Rich & Poor</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/RULE OF NATURE AND LAW  HEALTH AND WELLNESS  SURAJEET DUTTA.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/hope.jpg" alt="Rule of Nature">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Rule Of Nature</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/Man Made Money Stef Kuypers TEDxMelbourne.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/young1.jpg" alt="Money and Value">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Man Made Money</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/Rethinking capitalism - DW Documentary.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/bharstachar.webp" alt="Rethinking Capitalism">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Is This time to Rethinking Capitalism</h3>
+                        </div>
+                    </div>
+
+                        <!-- Video 1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/video1.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/bhrast.jpg" alt="Political">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Law and Justic</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/Rajesh.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/stopcorruption.jpg" alt="Rejesh Sir">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Point of View</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/Kanda.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/young.jpg" alt="Corruption">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Corrupt-स्वर्गीय सौन्दर्य</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/Nano.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/city.jpeg" alt="Nato">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">What we want</h3>
+                        </div>
+                    </div>
+                                     <!-- Video 1.1 - Everest -->
+                    <div class="mero-nepal-video-card" data-video="/video/Why Some Countries Are Poor and Others Rich [720p].mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/cultureNepal.jpg" alt="Why Rich & Poor">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Rich & Poor</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.2 - Pokhara -->
+                    <div class="mero-nepal-video-card" data-video="video/RULE OF NATURE AND LAW  HEALTH AND WELLNESS  SURAJEET DUTTA.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/hope.jpg" alt="Rule of Nature">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Rule Of Nature</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.3 - Rara -->
+                    <div class="mero-nepal-video-card" data-video="video/Man Made Money Stef Kuypers TEDxMelbourne.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/young1.jpg" alt="Money and Value">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Man Made Money</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Video 1.4 - Annapurna -->
+                    <div class="mero-nepal-video-card" data-video="video/Rethinking capitalism - DW Documentary.mp4">
+                        <div class="mero-nepal-video-thumbnail">
+                            <img src="images/bharstachar.webp" alt="Rethinking Capitalism">
+                            <div class="mero-nepal-play-icon"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="mero-nepal-video-info">
+                            <h3 class="mero-nepal-video-title">Is This time to Rethinking Capitalism</h3>
+                        </div>
+                    </div>
+    <!-- Video Modal -->
+                    <div class="mero-nepal-video-modal" id="videoModal">
+                        <div class="mero-nepal-modal-content">
+                            <span class="mero-nepal-close-modal" onclick="closeVideoModal()">×</span>
+                            <video class="mero-nepal-video-player" controls id="videoPlayer">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>   
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact-container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>सम्पर्क जानकारी</h2>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Luzern, Switzeland</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+4178668273</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>subash@news--war.com</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-clock"></i>
+                    <span>सोमबार - शुक्रबार: ९:०० बजे - ५:०० बजे</span>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>सम्पर्क फारम</h2>
+                <form id="contactForm" action="process_form.php" method="post">
+                    <div class="form-group">
+                        <label for="name">नाम / Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">इमेल / Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">विषय / Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">विषय छान्नुहोस् / Select Message</option>
+                            <option value="general">सामान्य जानकारी / Simple Message</option>
+                            <option value="support">सहयोग / Help</option>
+                            <option value="feedback">प्रतिक्रिया / Reaction</option>
+                            <option value="other">अन्य / Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">सन्देश / Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">पठाउनुहोस् / Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">MERO NEPAL</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"Natural resources are Nepal's invaluable assets — conservation and wise use is the path to prosperity." 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">Nepal is a beautiful country rich in natural resources. Mountains, rivers, forests, minerals, water resources, wildlife, and biodiversity are Nepal's most important assets.</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">Designed with ❤️ by Subash</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy;<script>document.write(new Date().getFullYear())</script> News--War. All rights reserved.</p>            </div>
+        </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+    <script src="tools/script.js"></script>
+    <script src="server.js"></script>
+
+</body>
+</html>

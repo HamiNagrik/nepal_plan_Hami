@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nepal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tools/style.css">
+
+      
+</head>
+<body>
+    <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+        <select class="language-selector" onchange="switchLanguage(this.value)">
+            <option value="english">English</option>
+            <option value="nepali">नेपाली</option>
+            <option value="hindi">हिन्दी</option>
+        </select>
+    </nav>
+
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">👩‍🎓 नेपालमा भ्रष्टाचार नियन्त्रणको सम्पूर्ण योजना 🌟</h1>
+            <h3 class="hero-subtitle">भ्रष्टाचार नियन्त्रणका मुख्य उपायहरू:</h3>
+                <ul>📜 कडा कानून व्यवस्था र कार्यान्वयन</ul>
+                <ul>👥 जनताको सक्रिय सहभागिता</ul>
+                <ul>🔍 पारदर्शी प्रक्रिया र जवाफदेहिता</ul>
+                <ul>📢 मिडियाको स्वतन्त्रता र जनजागरण</ul>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="scrollToSection('nepal-youth-sector')">थप जान्नुहोस्</button>
+                <button class="hero-btn" onclick="scrollToSection('nepal-education-sector')">शिक्षा र सीप</button>
+            </div>
+        </div>
+    </section>
+     
+    <div class="nepal-header">
+        <div class="nepal-container">
+            <h1 class="nepal-title">नेपालमा भ्रष्टाचार नियन्त्रणको सम्पूर्ण योजना</h1>
+            <h2 class="nepal-subtitle">भ्रष्टाचार नियन्त्रणका लागि व्यवस्थागत सुधार र जनजागरण</h2>
+        </div>
+    </div>
+    
+    <div class="nepal-container">
+        <!-- कानूनी सुधार र कार्यान्वयन -->
+        <div class="nepal-sector" id="nepal-education-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-education-content')">
+                <h2 class="nepal-sector-title">१. कानूनी सुधार र कार्यान्वयन</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-education-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कानूनी सुधार</div>
+                        <div class="nepal-stat-value">तत्काल</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कार्यान्वयन</div>
+                        <div class="nepal-stat-value">कडा</div>
+                        <div>निगरानी</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">दण्ड</div>
+                        <div class="nepal-stat-value">कडा</div>
+                        <div>निर्धारण</div>
+                    </div>
+                </div>
+                
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">कानूनी सुधारका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">भ्रष्टाचार निवारण ऐनको कडा कार्यान्वयन</li>
+                        <li class="nepal-action-item">सम्पत्ति जाँच आयोगको सशक्तिकरण</li>
+                        <li class="nepal-action-item">विशेष अदालतको गठन</li>
+                        <li class="nepal-action-item">कालो धन नियन्त्रण कानून</li>
+                        <li class="nepal-action-item">विदेशी सम्पत्ति नियन्त्रण</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>कानूनी सुधारका मुख्य बिन्दुहरू:</h4>
+                        <ul>
+                            <li>📜 कडा कानून व्यवस्था</li>
+                            <li>⚖️ त्वरित न्याय प्रक्रिया</li>
+                            <li>🔍 पारदर्शी जाँच प्रक्रिया</li>
+                            <li>💰 सम्पत्ति जाँच</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- संस्थागत सुधार -->
+        <div class="nepal-sector" id="nepal-leader1-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader1-content')">
+                <h2 class="nepal-sector-title">२. संस्थागत सुधार र पारदर्शिता</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader1-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पारदर्शिता</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जवाफदेहिता</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निगरानी</div>
+                        <div class="nepal-stat-value">२४/७</div>
+                        <div>आवश्यक</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">संस्थागत सुधारका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">सरकारी कार्यालयहरूमा पारदर्शिता</li>
+                        <li class="nepal-action-item">ई-गभर्नेन्सको विस्तार</li>
+                        <li class="nepal-action-item">जवाफदेहिता तन्त्रको सशक्तिकरण</li>
+                        <li class="nepal-action-item">निगरानी तन्त्रको सुदृढीकरण</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- जनजागरण र सहभागिता -->
+        <div class="nepal-sector" id="nepal-leader2-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader2-content')">
+                <h2 class="nepal-sector-title">३. जनजागरण र सामाजिक सहभागिता</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader2-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जनजागरण</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">सहभागिता</div>
+                        <div class="nepal-stat-value">सक्रिय</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जवाफदेहिता</div>
+                        <div class="nepal-stat-value">सामूहिक</div>
+                        <div>आवश्यक</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">जनजागरणका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">शैक्षिक कार्यक्रमहरू</li>
+                        <li class="nepal-action-item">सामाजिक जागरण</li>
+                        <li class="nepal-action-item">युवा सहभागिता</li>
+                        <li class="nepal-action-item">मिडिया सहभागिता</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- आर्थिक सुधार -->
+        <div class="nepal-sector" id="nepal-leader3-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader3-content')">
+                <h2 class="nepal-sector-title">४. आर्थिक सुधार र पारदर्शिता</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader3-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">पारदर्शिता</div>
+                        <div class="nepal-stat-value">१००%</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निगरानी</div>
+                        <div class="nepal-stat-value">कडा</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">जवाफदेहिता</div>
+                        <div class="nepal-stat-value">सामूहिक</div>
+                        <div>आवश्यक</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">आर्थिक सुधारका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">बजेट पारदर्शिता</li>
+                        <li class="nepal-action-item">कर प्रणाली सुधार</li>
+                        <li class="nepal-action-item">विदेशी निवेश नियन्त्रण</li>
+                        <li class="nepal-action-item">बैंकिङ नियमन</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- दीर्घकालीन योजना -->
+        <div class="nepal-sector" id="nepal-leader4-sector">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-leader4-content')">
+                <h2 class="nepal-sector-title">५. दीर्घकालीन योजना र कार्यान्वयन</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-leader4-content">
+                <div class="nepal-stats">
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">योजना</div>
+                        <div class="nepal-stat-value">दीर्घकालीन</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">कार्यान्वयन</div>
+                        <div class="nepal-stat-value">क्रमिक</div>
+                        <div>आवश्यक</div>
+                    </div>
+                    <div class="nepal-stat-card">
+                        <div class="nepal-stat-label">निगरानी</div>
+                        <div class="nepal-stat-value">निरन्तर</div>
+                        <div>आवश्यक</div>
+                    </div>
+                </div>
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">दीर्घकालीन योजनाका उपायहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">संस्थागत सुधार</li>
+                        <li class="nepal-action-item">कानूनी सुधार</li>
+                        <li class="nepal-action-item">सामाजिक परिवर्तन</li>
+                        <li class="nepal-action-item">आर्थिक सुधार</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- नेपाली भ्रष्ट नेताहरूको सूची -->
+        <div class="nepal-sector" id="nepal-corrupt-leaders">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-corrupt-leaders-content')">
+                <h2 class="nepal-sector-title">६. नेपाली भ्रष्ट नेताहरूको सूची</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-corrupt-leaders-content">
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">प्रमुख भ्रष्ट नेताहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">पुष्प कमल दाहाल (प्रचण्ड) - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. ५० करोड+, विदेशी सम्पत्ति: 
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">शेर बहादुर देउवा - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. ४५ करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा ३ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">खड्ग प्रसाद शर्मा ओली - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. ४० करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">माधव कुमार नेपाल - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. ३५ करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">बाबुराम भट्टराई - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. ३० करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">ज्ञानेन्द्र शाह - पूर्व राजा
+                            <br>💰 अनुमानित सम्पत्ति: रु. १०० करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा ५ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">गिरिजा प्रसाद कोइराला - पूर्व प्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २५ करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">रामचन्द्र पौडेल - पूर्व उपप्रधानमन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २० करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">नारायण काजी श्रेष्ठ - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १५ करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा १ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                        <li class="nepal-action-item">बालकृष्ण खनाल - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १८ करोड+, विदेशी सम्पत्ति:
+                            <br>🏢 नेपाल: काठमाडौंमा २ वटा बङ्गला, रियल स्टेट
+                            <br>📝 स्रोत: CIAA रिपोर्ट २०७९</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>भ्रष्टाचारको प्रकारहरू:</h4>
+                        <ul>
+                            <li>💰 सरकारी खरिदमा कमिसन</li>
+                            <li>🏢 रियल स्टेट कारोबार</li>
+                            <li>🏦 बैंकिङ लोन दुरुपयोग</li>
+                            <li>📝 सरकारी नियुक्तिमा भ्रष्टाचार</li>
+                            <li>🏠 जग्गा माफिया</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Corrupt Leaders List -->
+        <div class="nepal-sector" id="nepal-corrupt-leaders-2">
+            <div class="nepal-sector-header" onclick="toggleNepalSector('nepal-corrupt-leaders-content-2')">
+                <h2 class="nepal-sector-title">७. अतिरिक्त भ्रष्ट नेताहरूको सूची</h2>
+                <span class="nepal-toggle-icon">+</span>
+            </div>
+            <div class="nepal-sector-content" id="nepal-corrupt-leaders-content-2">
+                <div class="nepal-action-plan">
+                    <h3 class="nepal-action-title">अतिरिक्त भ्रष्ट नेताहरू</h3>
+                    <ul class="nepal-action-steps">
+                        <li class="nepal-action-item">शंकर पोखरेल - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २.५ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">राम कुमार श्रेष्ठ - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २.२ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">महेश्वर न्यौपाने - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.८ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">राम शरण महत - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">कृष्ण प्रसाद सिटौला - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.२ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा अपार्टमेन्ट, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">राम कुमार श्रेष्ठ - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.५ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">महेश्वर न्यौपाने - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.८ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">राम शरण महत - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. २ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">कृष्ण प्रसाद सिटौला - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.२ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा अपार्टमेन्ट, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                        <li class="nepal-action-item">राम कुमार श्रेष्ठ - पूर्व मन्त्री
+                            <br>💰 अनुमानित सम्पत्ति: रु. १.५ अर्ब+, विदेशी सम्पत्ति:
+                            <br>🏢 भारत: दिल्लीमा बङ्गला, बैङ्क खाता
+                            <br>🏢 नेपाल: काठमाडौंमा धेरै जग्गा, रियल स्टेट, बैङ्क खाता</li>
+                    </ul>
+                    <div class="nepal-challenges">
+                        <h4>भ्रष्टाचारको अतिरिक्त प्रकारहरू:</h4>
+                        <ul>
+                            <li>💰 विदेशी मुद्रा कालोबजारी</li>
+                            <li>🏢 विदेशी सम्पत्ति</li>
+                            <li>🏦 बैंकिङ लोन दुरुपयोग</li>
+                            <li>📝 सरकारी खरिदमा कमिसन</li>
+                            <li>🏠 जग्गा माफिया</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title" data-i18n="footer-title">मेरो नेपाल</h2>
+            <p class="footer-quote" data-i18n="footer-quote">"प्राकृतिक स्रोतहरू नेपालको अमूल्य सम्पत्ति हो — संरक्षण र बुद्धिमत्तापूर्ण उपयोग समृद्धिको मार्ग हो।" 🇳🇵</p>
+            <p class="footer-description" data-i18n="footer-description">नेपाल प्राकृतिक स्रोतहरूले भरिपूर्ण सुन्दर देश हो। हिमाल, नदी, जंगल, खनिज, जलस्रोत, वन्यजन्तु र जैविक विविधता नेपालको सबैभन्दा महत्वपूर्ण सम्पत्ति हो।</p>
+            <div class="social-icons">
+                <a href="https://github.com/HamiNagrik" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="icon brands fa-github"></i>
+                </a>
+                <a href="https://www.facebook.com/hami.nagrik.3" target="_blank" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://x.com/haminagrik/status/1908926506845323379" target="_blank" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/haminagrik/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/subash-k-lama-1" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@Economyforthepeople" target="_blank" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://t.me/+pEvrNLT3iRE0NmM8" target="_blank" class="social-icon" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="www.tiktok.com/@nagarikhamiplannepal" target="_blank" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p class="footer-design" data-i18n="footer-design">सुबासद्वारा ❤️ संग डिजाइन गरिएको</p>
+                <p class="copyright" data-i18n="footer-copyright">&copy; <span id="current-year"></span>  न्युज--युद्ध। 2025 सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+        <div class="footer-wave"></div>
+    </footer>
+
+    <script src="tools/script.js"></script>
+</body>
+</html>
