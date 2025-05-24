@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Development of Nepal / नेपालको विकास</title>
+<style>
+  /* Reset and base styles */
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  /* Header styles */
+header {
+  background-color: #00695c;
+  color: #fff;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #ffe0b2;
+}
+
+/* Navigation styles */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #009688;
+  flex-wrap: wrap;
+}
+
+nav a {
+  padding: 14px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #00695c;
+}
+
+/* Section styles with animation */
+section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ffe0b2;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Content visibility toggles */
+.content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+/* Show only selected language */
+.content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  header h1 {
+    font-size: 1.5em;
+  }
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    padding: 10px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Development of Nepal / नेपालको विकास</h1>
+  <div class="language-toggle">
+    <button id="nepaliBtn">नेपाली</button>
+    <button id="englishBtn">English</button>
+  </div>
+</header>
+
+<nav>
+  <a href="#introduction" data-lang="nepali">परिचय / Introduction</a>
+  <a href="#objectives" data-lang="nepali">उद्देश्य / Objectives</a>
+  <a href="#strategies" data-lang="nepali">रणनीतिहरू / Strategies</a>
+  <a href="#resources" data-lang="nepali">स्रोत व्यवस्थापन / Resources</a>
+  <a href="#success" data-lang="nepali">सफलता कथाहरू / Success Stories</a>
+  <a href="#contact" data-lang="nepali">सम्पर्क / Contact</a>
+</nav>
+
+<!-- Sections with both language content -->
+<section id="introduction">
+  <h2 class="nepali active">परिचय / Introduction</h2>
+  <h2 class="english">Introduction</h2>
+  <div class="content nepali active" id="introNepali">
+    <p>नेपाल प्राकृतिक रूपमा धनी र विविधतापूर्ण देश हो। यसको पहाड, जलस्रोत र सांस्कृतिक सम्पदाले विश्वलाई आकर्षित गर्दछ। हाम्रो योजना प्राकृतिक स्रोतहरूलाई सदुपयोग गर्दै आत्मनिर्भर र दिगो विकास गर्न हो।</p>
+  </div>
+  <div class="content english" id="introEnglish">
+    <p>Nepal is a naturally rich and diverse country. Its mountains, water resources, and cultural heritage attract the world. Our plan is to utilize natural resources for self-reliant and sustainable development.</p>
+  </div>
+</section>
+
+<section id="objectives">
+  <h2 class="nepali active">उद्देश्य / Objectives</h2>
+  <h2 class="english">Objectives</h2>
+  <div class="content nepali active" id="objectivesNepali">
+    <ul>
+      <li>प्राकृतिक स्रोतहरूको संरक्षण र सदुपयोग।</li>
+      <li>आत्मनिर्भरता र स्थानीय उद्योग विकास।</li>
+      <li>सामाजिक र पर्यावरणीय दिगोपनामा ध्यान दिने।</li>
+    </ul>
+  </div>
+  <div class="content english" id="objectivesEnglish">
+    <ul>
+      <li>Conserve and utilize natural resources.</li>
+      <li>Promote self-reliance and local industries.</li>
+      <li>Focus on social and environmental sustainability.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="strategies">
+  <h2 class="nepali active">रणनीतिहरू / Strategies</h2>
+  <h2 class="english">Strategies</h2>
+  <div class="content nepali active" id="strategiesNepali">
+    <ul>
+      <li>स्थानीय स्रोतहरूको पहिचान र संरक्षण।</li>
+      <li>परम्परागत र नवीन प्रविधिको प्रयोग।</li>
+      <li>सामुदायिक सहभागिता र सशक्तिकरण।</li>
+      <li>दिगो ऊर्जा स्रोतको विकास।</li>
+    </ul>
+  </div>
+  <div class="content english" id="strategiesEnglish">
+    <ul>
+      <li>Identify and conserve local resources.</li>
+      <li>Use traditional and modern technologies.</li>
+      <li>Encourage community participation and empowerment.</li>
+      <li>Develop sustainable energy sources.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="resources">
+  <h2 class="nepali active">स्रोत व्यवस्थापन / Resources</h2>
+  <h2 class="english">Resource Management</h2>
+  <div class="content nepali active" id="resourcesNepali">
+    <h3>प्राकृतिक स्रोतहरू:</h3>
+    <ul>
+      <li>जलस्रोत र जलविद्युत: नेपाल विश्वको दोस्रो ठूलो हाइड्रोपावर स्रोत।</li>
+      <li>खनिज सम्पदा: तामाको खानी, सुन, फलाम।</li>
+      <li>जैविक विविधता: राष्ट्रिय निकुञ्ज र संरक्षित क्षेत्रहरू।</li>
+    </ul>
+  </div>
+  <div class="content english" id="resourcesEnglish">
+    <h3>Natural Resources:</h3>
+    <ul>
+      <li>Water resources and hydropower: Nepal's hydro potential is second largest in the world.</li>
+      <li>Minerals: Copper, gold, iron.</li>
+      <li>Biodiversity: National parks and protected areas.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="success">
+  <h2 class="nepali active">सफलता कथाहरू / Success Stories</h2>
+  <h2 class="english">Success Stories</h2>
+  <div class="content nepali active" id="storiesNepali">
+    <p>स्थानीय स्तरमा निर्माण भएका साना जलविद्युत परियोजनाले स्वदेशी उर्जा उत्पादन बढाएको छ र आर्थिक विकासमा सहयोग पुर्‍याएको छ।</p>
+  </div>
+  <div class="content english" id="storiesEnglish">
+    <p>Small hydropower projects built locally have increased domestic energy production and contributed to economic growth.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="nepali active">सम्पर्क / Contact</h2>
+  <h2 class="english">Contact</h2>
+  <div class="content nepali active" id="contactNepali">
+    <p>नेपालको विकास र स्रोतहरूको सदुपयोगका लागि हामीलाई सम्पर्क गर्नुहोस्।</p>
+    <p><strong>इमेल:</strong> info@nepalresources.org</p>
+    <p><strong>फोन:</strong> +977-1-1234567</p>
+  </div>
+  <div class="content english" id="contactEnglish">
+    <p>Contact us for Nepal's development and resource utilization.</p>
+    <p><strong>Email:</strong> info@nepalresources.org</p>
+    <p><strong>Phone:</strong> +977-1-1234567</p>
+  </div>
+</section>
+
+<footer style="background:#00695c; color:#fff; text-align:center; padding:15px; margin-top:40px;">
+  <p>&copy; 2024 Nepal Development Initiative</p>
+</footer>
+
+<script>
+  // Language toggle logic
+  document.getElementById('nepaliBtn').onclick = () => switchLanguage('nepali');
+  document.getElementById('englishBtn').onclick = () => switchLanguage('english');
+
+  function switchLanguage(lang) {
+    document.querySelectorAll('.nepali').forEach(el => {
+      el.classList.toggle('active', lang === 'nepali');
+    });
+    document.querySelectorAll('.english').forEach(el => {
+      el.classList.toggle('active', lang === 'english');
+    });
+  }
+</script>
+
+</body>
+</html>
