@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नेपाल परिवर्तन २०३५ | Nepal Transformation 2035</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+ 
+   <div class="dropdown-backdrop" id="dropdown-backdrop"></div>
+    <div class="side-menu-backdrop" id="side-menu-backdrop"></div>
+    <div class="side-menu" id="side-menu">
+        <span class="close-menu" onclick="toggleSideMenu()">✕</span>
+        <h2 data-i18n="login-title">Login</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" data-i18n="login-button">Login</button>
+            <div id="login-message"></div>
+        </form>
+        <h2 data-i18n="register-title">Register</h2>
+        <form id="register-form" onsubmit="handleRegister(event)">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit" data-i18n="register-button">Register</button>
+            <div id="register-message"></div>
+        </form>
+        <h2 data-i18n="social-login-title">Social Login</h2>
+        <div class="social-login">
+            <a href="/auth/google" class="google" data-i18n="google-login">Login with Google</a>
+            <a href="/auth/facebook" class="facebook" data-i18n="facebook-login">Login with Facebook</a>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <span class="menu-toggle" onclick="toggleSideMenu()"><i class="fas fa-user"></i> ≡</span>
+        <span class="hamburger" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <div class="nav-item">
+                <a href="index.html" data-i18n="nav-home"><font color="white">🇳🇵मेरो नेपाल 🇳🇵</font></a>
+            </div>
+            <div class="nav-item">
+                <a href="positive.html" class="nav-link" data-dropdown="about-dropdown" data-i18n="nav-beauty">
+                    <font color="white">🌈 सौन्दर्य आँखाले देखिन्छ </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="about-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('about-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="myplan.html" class="dropdown-item" data-i18n="mero-plan">
+                            <img src="images/Education2.jpg" alt="MyplanforNepal"><font color="white">🇳🇵🎯 मेरो योजना  🌸</font>
+                        </a> <a href="positive.html" class="dropdown-item" data-i18n="nav-positivity">
+                            <img src="images/Child-protect1.jpg" alt="Education"><font color="white">🇳🇵 नेपालको सकारात्मकता 🌸</font>
+                        </a>
+                        <a href="hope.html" class="dropdown-item" data-i18n="nav-hope">
+                            <img src="images/hope.jpg" alt="Hope">🕊️ तर आशा बाँकी छ
+                        </a>
+                        <a href="young.html" class="dropdown-item" data-i18n="nav-youth">
+                            <img src="images/young.jpg" alt="Young"> 👩‍🎓 शिक्षित र सीपयुक्त युवा पुस्ता
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="myplan.html" class="nav-link" data-dropdown="programs-dropdown" data-i18n="nav-plan">
+                    <font color="white">🎯 मेरो योजना </font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="programs-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="education.html" class="dropdown-item" data-i18n="nav-education">
+                            <img src="images/education.jpeg" alt="Education"> 📚 शिक्षा योजना
+                        </a>
+                        <a href="jobs.html" class="dropdown-item" data-i18n="nav-jobs">
+                            <img src="images/jobss.png" alt="Jobs"> रोजगारी उपलब्ध
+                        </a>
+                        <a href="homes.html" class="dropdown-item" data-i18n="nav-homes">
+                            <img src="images/city.jpeg" alt="Protection"> 🏠आवास (घर) र शिक्षा (शैक्षिक सुविधा)
+                        </a>
+                        <a href="childproject.html" class="dropdown-item" data-i18n="nav-child-protection">
+                            <img src="images/Child-protect1.jpg" alt="Protection"> Child Protection & Education
+                        </a>
+                    </div>
+                </div>
+                
+            </div>    
+            <div class="nav-item">
+                <a href="corrupt.html" class="nav-link" data-dropdown="corruption-dropdown" data-i18n="nav-corruption">
+                    <font color="red">Curruption</font><i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown" id="corruption-dropdown">
+                    <span class="close-dropdown" onclick="hideDropdown('programs-dropdown')">✕</span>
+                    <div class="dropdown-content">
+                        <a href="hownepal.html" class="dropdown-item" data-i18n="nav-corruption-how">
+                            <img src="images/bhrast.jpg" alt="Corruption"> 🇳🇵 नेपाल कसरी भ्रष्ट राष्ट्र बन्दै गयो? 🕳️
+                        </a>
+                        <a href="wealths.html" class="dropdown-item" data-i18n="nav-corruption-wealth">
+                            <img src="images/netamoney.webp" alt="Corruption"> 🚫 नेताको सम्पत्ति
+                        </a>
+                        <a href="zerocorrupt.html" class="dropdown-item" data-i18n="nav-corruption-stop">
+                            <img src="images/stopcorruption.jpg" alt="ZeroCorruption"> 🚫 भ्रष्टाचार अन्त्य गर्ने
+                        </a>
+                            <a href="stopcorruption.html" class="dropdown-item" data-i18n="nav-stop-corruption"> <img src="images/stopcorrution1.jpeg" alt="StopCorruption"> 🚫 भ्रष्टाचार नियन्त्रण</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="nav-item">
+                <a href="health.html" data-i18n="nav-health"> स्वास्थ्य सेवा 🩺</a>
+            </div>       
+            <div class="nav-item">
+                <a href="food.html" data-i18n="nav-food"> आहार सुनिश्चित </a>						
+            </div>                     
+            <div class="nav-item">
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
+            </div>
+        </div>
+      <!-- Language Toggle -->
+       <section>
+    <div class="language-toggle">
+        <button class="lang-btn active" id="englishBtn">
+            <i class="fas fa-language"></i>
+            English
+        </button>
+        <button class="lang-btn" id="nepaliBtn">
+            <i class="fas fa-language"></i>
+            नेपाली
+        </button>
+    </div>
+    </section>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title english-content">Nepal Transformation 2035</h1>
+            <h1 class="hero-title nepali-content">नेपाल परिवर्तन २०३५</h1>
+            
+            <p class="hero-subtitle english-content">A Comprehensive Development Blueprint for Sustainable Growth and Prosperity</p>
+            <p class="hero-subtitle nepali-content">दिगो विकास र समृद्धिको लागि समग्र विकास योजना</p>
+            
+            <div class="cta-buttons">
+                <button class="cta-btn" id="exploreBtn">
+                    <span class="english-content">Explore the Plan</span>
+                    <span class="nepali-content">योजना हेर्नुहोस्</span>
+                </button>
+                <button class="cta-btn outline" id="downloadBtn">
+                    <span class="english-content">Download Full Report</span>
+                    <span class="nepali-content">सम्पूर्ण विवरण डाउनलोड गर्नुहोस्</span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-down" id="scrollDown">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Vision Section -->
+        <section id="vision" class="section">
+            <h2 class="section-title english-content">Our National Vision</h2>
+            <h2 class="section-title nepali-content">हाम्रो राष्ट्रिय दृष्टि</h2>
+            
+            <div class="english-content">
+                <p>By 2035, Nepal will emerge as a developed nation through strategic investments in human capital, infrastructure, and technology, while preserving our rich cultural heritage and natural environment. This comprehensive plan outlines our path to sustainable prosperity.</p>
+            </div>
+            <div class="nepali-content">
+                <p>२०३५ सम्ममा, नेपाल मानव पूँजी, आधारभूत संरचना र प्रविधिमा रणनीतिक लगानी गर्दै विकसित राष्ट्रको रूपमा उदाउनेछ, जबकि हाम्रो समृद्ध सांस्कृतिक विरासत र प्राकृतिक वातावरण संरक्षण गर्दै। यो समग्र योजनाले दिगो समृद्धिको लागि हाम्रो मार्ग रेखाङ्कन गर्दछ।</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="dev-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                        <h3 class="card-title english-content">Energy Independence</h3>
+                        <h3 class="card-title nepali-content">ऊर्जा स्वतन्त्रता</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="english-content">
+                            <p>Generate 15,000 MW of clean hydroelectric power, achieving energy surplus and regional export capacity.</p>
+                        </div>
+                        <div class="nepali-content">
+                            <p>१५,००० मेगावाट स्वच्छ जलविद्युत उत्पादन गर्ने, ऊर्जा अधिशेष र क्षेत्रीय निर्यात क्षमता हासिल गर्ने।</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-target="35"></div>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">2,100 MW</span>
+                                <span class="english-content">Current Capacity</span>
+                                <span class="nepali-content">वर्तमान क्षमता</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">15,000 MW</span>
+                                <span class="english-content">2035 Target</span>
+                                <span class="nepali-content">२०३५ लक्ष्य</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dev-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="card-title english-content">Education Revolution</h3>
+                        <h3 class="card-title nepali-content">शिक्षा क्रान्ति</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="english-content">
+                            <p>Universal quality education with 100% literacy rate and STEM-focused curriculum nationwide.</p>
+                        </div>
+                        <div class="nepali-content">
+                            <p>१००% साक्षरता दर र STEM-केन्द्रित पाठ्यक्रम सहित विश्वस्तरीय गुणस्तरीय शिक्षा।</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-target="72"></div>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">72%</span>
+                                <span class="english-content">Current Literacy</span>
+                                <span class="nepali-content">वर्तमान साक्षरता</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">100%</span>
+                                <span class="english-content">2035 Target</span>
+                                <span class="nepali-content">२०३५ लक्ष्य</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dev-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="card-title english-content">Economic Growth</h3>
+                        <h3 class="card-title nepali-content">आर्थिक वृद्धि</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="english-content">
+                            <p>Sustain 8%+ annual GDP growth through diversified economy and increased FDI.</p>
+                        </div>
+                        <div class="nepali-content">
+                            <p>विविधीकृत अर्थतन्त्र र बढेको FDI मार्फत ८%+ वार्षिक GDP वृद्धि कायम गर्ने।</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" data-target="42"></div>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">$36B</span>
+                                <span class="english-content">Current GDP</span>
+                                <span class="nepali-content">वर्तमान GDP</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">$150B</span>
+                                <span class="english-content">2035 Target</span>
+                                <span class="nepali-content">२०३५ लक्ष्य</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Data Visualization Section -->
+        <section class="data-section">
+            <h2 class="section-title english-content" style="color: white;">Key Development Indicators</h2>
+            <h2 class="section-title nepali-content" style="color: white;">मुख्य विकास सूचकहरू</h2>
+            
+            <div class="english-content">
+                <p>Track our progress toward national transformation goals through these critical metrics.</p>
+            </div>
+            <div class="nepali-content">
+                <p>यी महत्वपूर्ण मेट्रिकहरू मार्फत राष्ट्रिय परिवर्तन लक्ष्यतर्फ हाम्रो प्रगति ट्र्याक गर्नुहोस्।</p>
+            </div>
+            
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">
+                    <span class="english-content">All Sectors</span>
+                    <span class="nepali-content">सबै क्षेत्रहरू</span>
+                </button>
+                <button class="filter-btn" data-filter="infrastructure">
+                    <span class="english-content">Infrastructure</span>
+                    <span class="nepali-content">आधारभूत संरचना</span>
+                </button>
+                <button class="filter-btn" data-filter="education">
+                    <span class="english-content">Education</span>
+                    <span class="nepali-content">शिक्षा</span>
+                </button>
+                <button class="filter-btn" data-filter="health">
+                    <span class="english-content">Health</span>
+                    <span class="nepali-content">स्वास्थ्य</span>
+                </button>
+                <button class="filter-btn" data-filter="economy">
+                    <span class="english-content">Economy</span>
+                    <span class="nepali-content">अर्थतन्त्र</span>
+                </button>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="developmentChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Sector Development -->
+        <section id="sectors" class="section">
+            <h2 class="section-title english-content">Sectoral Development Plans</h2>
+            <h2 class="section-title nepali-content">क्षेत्रीय विकास योजनाहरू</h2>
+            
+            <div class="english-content">
+                <p>Comprehensive strategies for each critical sector of national development.</p>
+            </div>
+            <div class="nepali-content">
+                <p>राष्ट्रिय विकासका प्रत्येक महत्वपूर्ण क्षेत्रका लागि समग्र रणनीतिहरू।</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="dev-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-road"></i></div>
+                        <h3 class="card-title english-content">Transport Infrastructure</h3>
+                        <h3 class="card-title nepali-content">यातायात आधारभूत संरचना</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="english-content">
+                            <ul class="project-list">
+                                <li><i class="fas fa-check-circle"></i> East-West Electric Railway (1,000km)</li>
+                                <li><i class="fas fa-check-circle"></i> Kathmandu-Terai Expressway</li>
+                                <li><i class="fas fa-check-circle"></i> 10 Regional Airports Upgrade</li>
+                                <li><i class="fas fa-check-circle"></i> Smart City Metro Systems</li>
+                            </ul>
+                        </div>
+                        <div class="nepali-content">
+                            <ul class="project-list">
+                                <li><i class="fas fa-check-circle"></i> पूर्व-पश्चिम इलेक्ट्रिक रेलवे (१,००० किमी)</li>
+                                <li><i class="fas fa-check-circle"></i> काठमाडौं-तराई एक्सप्रेसवे</li>
+                                <li><i class="fas fa-check-circle"></i> १० क्षेत्रीय विमानस्थल उन्नयन</li>
+                                <li><i class="fas fa-check-circle"></i> स्मार्ट सहर मेट्रो प्रणाली</li>
+                            </ul>
+                        </div>
+                        <button class="details-btn" data-sector="transport">
+                            <span class="english-content">View Details</span>
+                            <span class="nepali-content">विवरण हेर्नुहोस्</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="dev-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-plug"></i></div>
+                        <h3 class="card-title english-content">Energy Development</h3>
+                        <h3 class="card-title nepali-content">ऊर्जा विकास</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="english-content">
+                            <ul class="project-list">
+                                <li><i class="fas fa-check-circle"></i> Upper Tamakoshi II (500MW)</li>
+                                <li><i class="fas fa-check-circle"></i> Karnali Chisapani (3,000MW)</li>
+                                <li><i class="fas fa-check-circle"></i> National Solar Grid</li>
+                                <li><i class="fas fa-check-circle"></i> Cross-border Transmission</li>
+                            </ul>
+                        </div>
+                        <div class="nepali-content">
+                            <ul class="project-list">
+                                <li><i class="fas fa-check-circle"></i> माथिल्लो तामाकोशी II (५०० मेगावाट)</li>
+                                <li><i class="fas fa-check-circle"></i> कर्णाली चिसापानी (३,००० मेगावाट)</li>
+                                <li><i class="fas fa-check-circle"></i> राष्ट्रिय सौर्य ग्रिड</li>
+                                <li><i class="fas fa-check-circle"></i> सीमा पार ट्रान्समिसन</li>
+                                                            </ul>
+                        </div>
+                        <button class="details-btn" data-sector="energy">
+                            <span class="english-content">View Details</span>
+                            <span class="nepali-content">विवरण हेर्नुहोस्</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Additional sector cards would continue here with the same bilingual pattern -->
+                
+            </div>
+        </section>
+        
+        <!-- Implementation Roadmap -->
+        <section id="roadmap" class="section">
+            <h2 class="section-title english-content">Implementation Roadmap</h2>
+            <h2 class="section-title nepali-content">कार्यान्वयन योजना</h2>
+            
+            <div class="english-content">
+                <p>Phased approach to ensure systematic execution of development projects.</p>
+            </div>
+            <div class="nepali-content">
+                <p>विकास परियोजनाहरूको व्यवस्थित कार्यान्वयन सुनिश्चित गर्न चरणबद्ध दृष्टिकोण।</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2025</div>
+                    <h3 class="timeline-title english-content">Foundation Phase</h3>
+                    <h3 class="timeline-title nepali-content">आधार चरण</h3>
+                    <div class="english-content">
+                        <ul>
+                            <li>Policy and institutional reforms</li>
+                            <li>Digital infrastructure rollout</li>
+                            <li>Education system overhaul</li>
+                            <li>Priority infrastructure starts</li>
+                        </ul>
+                    </div>
+                    <div class="nepali-content">
+                        <ul>
+                            <li>नीति र संस्थागत सुधार</li>
+                            <li>डिजिटल आधारभूत संरचना सुरुवात</li>
+                            <li>शिक्षा प्रणाली सुधार</li>
+                            <li>प्राथमिकता आधारभूत संरचना सुरुवात</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Additional timeline items would continue here with bilingual content -->
+                
+            </div>
+        </section>
+        
+        <!-- Project Map -->
+        <section id="projects" class="section">
+            <h2 class="section-title english-content">Strategic Projects Map</h2>
+            <h2 class="section-title nepali-content">रणनीतिक परियोजना नक्शा</h2>
+            
+            <div class="english-content">
+                <p>Geographic distribution of major development initiatives across Nepal.</p>
+            </div>
+            <div class="nepali-content">
+                <p>नेपालभर प्रमुख विकास पहलहरूको भौगोलिक वितरण।</p>
+            </div>
+            
+            <div class="map-section">
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-type="all">
+                        <span class="english-content">All Projects</span>
+                        <span class="nepali-content">सबै परियोजनाहरू</span>
+                    </button>
+                    <button class="filter-btn" data-type="energy">
+                        <span class="english-content">Energy</span>
+                        <span class="nepali-content">ऊर्जा</span>
+                    </button>
+                    <button class="filter-btn" data-type="transport">
+                        <span class="english-content">Transport</span>
+                        <span class="nepali-content">यातायात</span>
+                    </button>
+                    <button class="filter-btn" data-type="urban">
+                        <span class="english-content">Urban</span>
+                        <span class="nepali-content">शहरी</span>
+                    </button>
+                    <button class="filter-btn" data-type="tourism">
+                        <span class="english-content">Tourism</span>
+                        <span class="nepali-content">पर्यटन</span>
+                    </button>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-overlay"></div>
+                    <!-- Map points would be generated here -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Get Involved Section -->
+        <section id="get-involved" class="section">
+            <h2 class="section-title english-content">Contribute to Nepal's Development</h2>
+            <h2 class="section-title nepali-content">नेपालको विकासमा योगदान दिनुहोस्</h2>
+            
+            <div class="english-content">
+                <p>Join the movement to transform Nepal - whether you're a citizen, diaspora, or international partner.</p>
+            </div>
+            <div class="nepali-content">
+                <p>नेपाल परिवर्तनको अभियानमा सामेल हुनुहोस् - तपाईं नागरिक, प्रवासी वा अन्तर्राष्ट्रिय साझेदार जे भए पनि।</p>
+            </div>
+            
+            <div class="card-grid">
+                <!-- Involvement cards would continue here with bilingual content -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3 class="english-content">Nepal 2035</h3>
+                <h3 class="nepali-content">नेपाल २०३५</h3>
+                <div class="english-content">
+                    <p>A comprehensive national development plan to transform Nepal into a prosperous, developed nation by 2035.</p>
+                </div>
+                <div class="nepali-content">
+                    <p>२०३५ सम्ममा नेपाललाई समृद्ध, विकसित राष्ट्रमा परिणत गर्ने समग्र राष्ट्रिय विकास योजना।</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="english-content">Quick Links</h3>
+                <h3 class="nepali-content">द्रुत लिंकहरू</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#vision">
+                        <span class="english-content">Vision</span>
+                        <span class="nepali-content">दृष्टि</span>
+                    </a></li>
+                    <!-- Additional footer links would continue here -->
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="english-content">Contact</h3>
+                <h3 class="nepali-content">सम्पर्क</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><i class="fas fa-envelope"></i> info@nepal2035.gov.np</li>
+                    <li class="footer-link"><i class="fas fa-phone"></i> +977-1-4221234</li>
+                    <li class="footer-link"><i class="fas fa-map-marker-alt"></i> 
+                        <span class="english-content">Singha Durbar, Kathmandu</span>
+                        <span class="nepali-content">सिंहदरबार, काठमाडौं</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 
+                <span class="english-content">Nepal Transformation 2035. All rights reserved.</span>
+                <span class="nepali-content">नेपाल परिवर्तन २०३५। सर्वाधिकार सुरक्षित।</span>
+            </p>
+            <p>
+                <span class="english-content">A Government of Nepal Initiative</span>
+                <span class="nepali-content">नेपाल सरकारको पहल</span>
+            </p>
+        </div>
+    </footer>
+        <script src="style.js"></script>
+
+</body>
+</html>
+                           
